@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Android-Http-Services</string>
+    <string name="title_activity_inicio">Android-Http-Services</string>
+
+    <!-- Strings relacionados con el login -->
+    <string name="prompt_ip_servidor">IP del Servidor</string>
+    <string name="prompt_puerto_servidor">Puerto del Servidor</string>
+    <string name="action_ok">OK</string>
+</resources>

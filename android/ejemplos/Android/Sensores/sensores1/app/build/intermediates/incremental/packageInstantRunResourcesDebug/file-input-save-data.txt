@@ -1,0 +1,30 @@
+#Internal package file, do not edit.
+#Sun May 14 12:31:27 ART 2017
+2.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+5.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\stat_sys_sensor2.png
+5.set=ANDROID_RESOURCE
+3.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+6.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\icon.png
+2.set=ANDROID_RESOURCE
+4.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+7.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\list.xml
+7.set=ANDROID_RESOURCE
+count=9
+0.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\main.xml
+5.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\voz5.amr
+4.set=ANDROID_RESOURCE
+6.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\icon_sensor.png
+1.set=ANDROID_RESOURCE
+7.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+2.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
+6.set=ANDROID_RESOURCE
+0.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+3.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\stat_sys_sensor.png
+3.set=ANDROID_RESOURCE
+1.base=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_
+4.file=C\:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\resources-debug.ap_\\AndroidManifest.xml
+8.set=ANDROID_RESOURCE
+0.set=ANDROID_RESOURCE

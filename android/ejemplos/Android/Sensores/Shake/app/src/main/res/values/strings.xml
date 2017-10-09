@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shake</string>
+    <string name="switch_button">Detectar Shake</string>
+    <string name="sensor_unsupported">Sensor no soportado</string>
+    <string name="helpinfo">Sable de Luz Star Wars...</string>
+
+</resources>
