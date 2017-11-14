@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\libs\GoogleAdMobAdsSdk-4.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6f35996c7c14b39ef233054a19483f9fed8a8bf3">
+        <dex dex="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\build\intermediates\pre-dexed\debug\GoogleAdMobAdsSdk-4.3.1_ab60b8f48e76393c704c195c7b9362af2ae8239c.jar" />
+    </item>
+
+</items>
