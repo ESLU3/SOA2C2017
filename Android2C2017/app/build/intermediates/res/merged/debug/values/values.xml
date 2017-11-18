@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sensores en mi Movil</string>
-    <string name="hello">Hello World, MainActivity!</string>
-    <string name="local_service_started">Servicio comenzado</string>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Secador SMART</string>
+    <string name="text_bluetooth_off">Bluetooth Deshabilitado</string>
+    <string name="text_bluetooth_on">Bluetooth Habilitado</string>
+    <string name="text_disable">Desactivar</string>
+    <string name="text_enable">Activar</string>
+    <string name="text_list_devices">Lista de dispositivos</string>
+    <string name="text_list_paired_devices">Dispositivos emparejados</string>
+    <string name="text_pair">Emparejar</string>
+    <string name="text_scan_devices">Buscar dispositivos</string>
+    <string name="text_stop_scan">Buscar dispositivos</string>
+    <string name="text_view_paired">Dispositivos emparejados</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
 </resources>

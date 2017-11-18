@@ -9,7 +9,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="sensor" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
@@ -45,127 +44,129 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="R.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/sensores/R.java">
+      <file leaf-file-name="DeviceListActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-              <folding />
+            <state relative-caret-position="-1909">
+              <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3270#4113#0" expanded="true" />
+                <element signature="e#4112#4113#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListaSensoresActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
+      <file leaf-file-name="DeviceListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="1054">
+              <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/MainActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="154" column="11" selection-start-line="154" selection-start-column="11" selection-end-line="154" selection-end-column="11" />
+            <state relative-caret-position="-3099">
+              <caret line="154" column="28" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1445#1462#0" expanded="true" />
+                <element signature="e#9279#11569#0" expanded="true" />
+                <element signature="e#11568#11569#0" expanded="true" />
+                <element signature="e#11735#12435#0" expanded="true" />
+                <element signature="e#12434#12435#0" expanded="true" />
+                <element signature="e#12491#12639#0" expanded="true" />
+                <element signature="e#12638#12639#0" expanded="true" />
+                <element signature="e#12697#13098#0" expanded="true" />
+                <element signature="e#13097#13098#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sensor.java" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Android/android-sdk/sources/android-23/android/hardware/Sensor.java">
+      <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_ACCELEROMETER#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_ACCELEROMETER#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_MAGNETIC_FIELD#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_MAGNETIC_FIELD#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_ORIENTATION#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_ORIENTATION#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_GYROSCOPE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_GYROSCOPE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_LIGHT#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_LIGHT#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_PRESSURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_PRESSURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_TEMPERATURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_TEMPERATURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_PROXIMITY#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_PROXIMITY#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_GRAVITY#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_GRAVITY#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_LINEAR_ACCELERATION#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_LINEAR_ACCELERATION#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_RELATIVE_HUMIDITY#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_RELATIVE_HUMIDITY#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_AMBIENT_TEMPERATURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_AMBIENT_TEMPERATURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_MAGNETIC_FIELD_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_MAGNETIC_FIELD_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_GAME_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_GAME_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_GYROSCOPE_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_GYROSCOPE_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_SIGNIFICANT_MOTION#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_STEP_DETECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_STEP_DETECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_STEP_COUNTER#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_STEP_COUNTER#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_GEOMAGNETIC_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_GEOMAGNETIC_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_HEART_RATE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_HEART_RATE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_TILT_DETECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#SENSOR_STRING_TYPE_TILT_DETECTOR#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_WAKE_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_WAKE_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_GLANCE_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_GLANCE_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_PICK_UP_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_PICK_UP_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_WRIST_TILT_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#STRING_TYPE_WRIST_TILT_GESTURE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#TYPE_ALL#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#REPORTING_MODE_CONTINUOUS#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#REPORTING_MODE_ON_CHANGE#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#REPORTING_MODE_ONE_SHOT#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;field#REPORTING_MODE_SPECIAL_TRIGGER#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getReportingMode#0;class#Sensor#0" expanded="false" />
-                <element signature="method#getReportingMode#0;class#Sensor#0" expanded="false" />
-                <element signature="method#getMaxLengthValuesArray#0;class#Sensor#0" expanded="false" />
-                <element signature="e#25460#25523#0" expanded="false" />
-                <element signature="e#25833#25890#0" expanded="false" />
-                <element signature="method#Sensor#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getName#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getVendor#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getType#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getVersion#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getMaximumRange#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getResolution#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getPower#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getMinDelay#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getFifoReservedEventCount#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getFifoMaxEventCount#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getStringType#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getRequiredPermission#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getHandle#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#getMaxDelay#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#isWakeUpSensor#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#isDataInjectionSupported#0;class#Sensor#0" expanded="false" />
-                <element signature="method#isDataInjectionSupported#0;class#Sensor#0" expanded="false" />
-                <element signature="method#setRange#0;class#Sensor#0" expanded="false" />
-                <element signature="method#toString#0;class#Sensor#0" expanded="false" />
-                <element signature="docComment;method#setType#0;class#Sensor#0" expanded="false" />
-                <element signature="method#setType#0;class#Sensor#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="31">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_paired_devices.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_paired_devices.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1808,9 +1809,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/DeviceListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/activity_comunicacion.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_comunicacion.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ListaSensoresActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -1873,20 +1884,24 @@
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
       <flattenPackages />
-      <showMembers />
+      <showMembers AndroidView="true" />
       <showModules />
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollToSource AndroidView="true" />
+      <autoscrollFromSource AndroidView="true" />
       <sortByType />
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1895,12 +1910,156 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity_comunicacion.xml" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="secador_smart" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainActivity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="secador_smart" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sensores1" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1911,7 +2070,15 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="T039702F39" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.3.1" />
-    <property name="last_opened_file_path" value="C:/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Arduino-AndroidBluethoot/Android-Code" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\src\main\res\values" />
+      <recent name="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\src\main\res" />
+      <recent name="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\src\main\java\es\epinanab\secador_smart" />
+      <recent name="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\src\main\res\layout" />
+    </key>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -2249,33 +2416,33 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3338983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5237288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75084746" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2881356" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2193646" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3338983" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26172465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3220339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2290,178 +2457,23 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/sensores/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/sensores/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/sensores/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/import-summary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/android-sdk/sources/android-23/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="2088" column="16" selection-start-line="2088" selection-start-column="16" selection-end-line="2088" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Android/android-sdk/sources/android-23/android/hardware/Sensor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
+        <state relative-caret-position="357">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Sensor#0" expanded="false" />
@@ -2552,27 +2564,511 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/sensores/R.java">
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/secador_smart/R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+        <state relative-caret-position="306">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/ListaSensoresActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/ListaSensoresActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="425">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/sensores/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="154" column="11" selection-start-line="154" selection-start-column="11" selection-end-line="154" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/secador_smart/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/ListaSensoresActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/secador_smart/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/ListaSensoresActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/ListaSensoresActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/ListaSensoresActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import-summary.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/android-sdk/sources/android-23/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="2088" column="16" selection-start-line="2088" selection-start-column="16" selection-end-line="2088" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/android-sdk/sources/android-23/android/hardware/Sensor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_ACCELEROMETER#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_ACCELEROMETER#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_MAGNETIC_FIELD#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_MAGNETIC_FIELD#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_ORIENTATION#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_ORIENTATION#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_GYROSCOPE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_GYROSCOPE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_LIGHT#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_LIGHT#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_PRESSURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_PRESSURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_TEMPERATURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_TEMPERATURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_PROXIMITY#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_PROXIMITY#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_GRAVITY#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_GRAVITY#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_LINEAR_ACCELERATION#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_LINEAR_ACCELERATION#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_RELATIVE_HUMIDITY#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_RELATIVE_HUMIDITY#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_AMBIENT_TEMPERATURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_AMBIENT_TEMPERATURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_MAGNETIC_FIELD_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_MAGNETIC_FIELD_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_GAME_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_GAME_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_GYROSCOPE_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_GYROSCOPE_UNCALIBRATED#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_SIGNIFICANT_MOTION#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_STEP_DETECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_STEP_DETECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_STEP_COUNTER#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_STEP_COUNTER#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_GEOMAGNETIC_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_GEOMAGNETIC_ROTATION_VECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_HEART_RATE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_HEART_RATE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_TILT_DETECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#SENSOR_STRING_TYPE_TILT_DETECTOR#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_WAKE_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_WAKE_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_GLANCE_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_GLANCE_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_PICK_UP_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_PICK_UP_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_WRIST_TILT_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#STRING_TYPE_WRIST_TILT_GESTURE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#TYPE_ALL#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#REPORTING_MODE_CONTINUOUS#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#REPORTING_MODE_ON_CHANGE#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#REPORTING_MODE_ONE_SHOT#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;field#REPORTING_MODE_SPECIAL_TRIGGER#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getReportingMode#0;class#Sensor#0" expanded="false" />
+            <element signature="method#getReportingMode#0;class#Sensor#0" expanded="false" />
+            <element signature="method#getMaxLengthValuesArray#0;class#Sensor#0" expanded="false" />
+            <element signature="e#25460#25523#0" expanded="false" />
+            <element signature="e#25833#25890#0" expanded="false" />
+            <element signature="method#Sensor#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getName#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getVendor#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getType#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getVersion#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getMaximumRange#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getResolution#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getPower#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getMinDelay#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getFifoReservedEventCount#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getFifoMaxEventCount#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getStringType#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getRequiredPermission#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getHandle#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#getMaxDelay#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#isWakeUpSensor#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#isDataInjectionSupported#0;class#Sensor#0" expanded="false" />
+            <element signature="method#isDataInjectionSupported#0;class#Sensor#0" expanded="false" />
+            <element signature="method#setRange#0;class#Sensor#0" expanded="false" />
+            <element signature="method#toString#0;class#Sensor#0" expanded="false" />
+            <element signature="docComment;method#setType#0;class#Sensor#0" expanded="false" />
+            <element signature="method#setType#0;class#Sensor#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/es/epinanab/secador_smart/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/activity_comunicacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/DeviceListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/DeviceListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/epinanab/secador_smart/ListaSensoresActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/stat_sys_sensor2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/stat_sys_sensor.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon_sensor.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-mdpi/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-ldpi/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comunicacion.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-v14/activity_comunicacion.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/activity_comunicacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_device.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ListaSensoresActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_paired_devices.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/android-sdk/sources/android-23/android/content/BroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="489" column="25" selection-start-line="489" selection-start-column="25" selection-end-line="489" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/values-sw600dp/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1909">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3270#4113#0" expanded="true" />
+            <element signature="e#4112#4113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3099">
+          <caret line="154" column="28" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1445#1462#0" expanded="true" />
+            <element signature="e#9279#11569#0" expanded="true" />
+            <element signature="e#11568#11569#0" expanded="true" />
+            <element signature="e#11735#12435#0" expanded="true" />
+            <element signature="e#12434#12435#0" expanded="true" />
+            <element signature="e#12491#12639#0" expanded="true" />
+            <element signature="e#12638#12639#0" expanded="true" />
+            <element signature="e#12697#13098#0" expanded="true" />
+            <element signature="e#13097#13098#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
