@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class DeviceListActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("blut", "entre al DeviceListActivity");
 
         setContentView(R.layout.activity_paired_devices);
 
@@ -115,6 +117,7 @@ public class DeviceListActivity extends Activity {
 
             //Atraves del Intent obtengo el evento de Bluethoot que informo el broadcast del SO
             String action = intent.getAction();
+            Log.d("blut", "muestro action" + action);
 
             //si el SO detecto un emparejamiento o desemparjamiento de bulethoot
             if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {

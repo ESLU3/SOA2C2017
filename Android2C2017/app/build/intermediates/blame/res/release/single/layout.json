@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_paired_devices.xml",
+        "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\layout\\activity_paired_devices.xml"
+    },
+    {
+        "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\release\\layout\\list_item_device.xml",
+        "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\layout\\list_item_device.xml"
+    },
+    {
+        "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\layout\\activity_main.xml"
+    }
+]

@@ -2,13 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\libs\GoogleAdMobAdsSdk-4.3.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="6f35996c7c14b39ef233054a19483f9fed8a8bf3">
-        <dex dex="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\build\intermediates\pre-dexed\debug\GoogleAdMobAdsSdk-4.3.1_ab60b8f48e76393c704c195c7b9362af2ae8239c.jar" />
+        sha1="d9947c13d563ba554fb099618111c2f81c43c636">
+        <dex dex="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5d011078e45e1334f65c3f547726dbf4856de4eb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_7ec7fdcb794986d4769649964baa98aacc956429\classes.dex" />
     </item>
 
 </items>

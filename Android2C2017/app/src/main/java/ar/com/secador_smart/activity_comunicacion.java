@@ -22,7 +22,8 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class activity_comunicacion extends Activity {
+public class activity_comunicacion extends Activity
+{
 
     Button btnApagar;
     Button btnEncender;
@@ -44,14 +45,15 @@ public class activity_comunicacion extends Activity {
     private static String address = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunicacion);
 
         //Se definen los componentes del layout
-        btnApagar = (Button) findViewById(R.id.btnApagar);
-        btnEncender = (Button) findViewById(R.id.btnEncender);
-        txtPotenciometro = (TextView) findViewById(R.id.txtValorPotenciometro);
+        btnApagar=(Button)findViewById(R.id.btnApagar);
+        btnEncender=(Button)findViewById(R.id.btnEncender);
+        txtPotenciometro=(TextView)findViewById(R.id.txtValorPotenciometro);
 
         //obtengo el adaptador del bluethoot
         btAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -73,26 +75,35 @@ public class activity_comunicacion extends Activity {
         super.onResume();
 
         //Obtengo el parametro, aplicando un Bundle, que me indica la Mac Adress del HC05
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
+        Intent intent=getIntent();
+        Bundle extras=intent.getExtras();
 
-        address = extras.getString("Direccion_Bluethoot");
+        address= extras.getString("Direccion_Bluethoot");
 
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
         //se realiza la conexion del Bluethoot crea y se conectandose a atraves de un socket
-        try {
+        try
+        {
             btSocket = createBluetoothSocket(device);
-        } catch (IOException e) {
-            showToast("La creacción del Socket fallo");
+        }
+        catch (IOException e)
+        {
+            showToast( "La creacción del Socket fallo");
         }
         // Establish the Bluetooth socket connection.
-        try {
+        try
+        {
             btSocket.connect();
-        } catch (IOException e) {
-            try {
+        }
+        catch (IOException e)
+        {
+            try
+            {
                 btSocket.close();
-            } catch (IOException e2) {
+            }
+            catch (IOException e2)
+            {
                 //insert code to deal with this
             }
         }
@@ -110,9 +121,11 @@ public class activity_comunicacion extends Activity {
 
     @Override
     //Cuando se ejecuta el evento onPause se cierra el socket Bluethoot, para no recibiendo datos
-    public void onPause() {
+    public void onPause()
+    {
         super.onPause();
-        try {
+        try
+        {
             //Don't leave Bluetooth sockets open when leaving activity
             btSocket.close();
         } catch (IOException e2) {
@@ -123,22 +136,26 @@ public class activity_comunicacion extends Activity {
     //Metodo que crea el socket bluethoot
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
 
-        return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
     }
 
     //Handler que sirve que permite mostrar datos en el Layout al hilo secundario
-    private Handler Handler_Msg_Hilo_Principal() {
+    private Handler Handler_Msg_Hilo_Principal ()
+    {
         return new Handler() {
-            public void handleMessage(android.os.Message msg) {
+            public void handleMessage(android.os.Message msg)
+            {
                 //si se recibio un msj del hilo secundario
-                if (msg.what == handlerState) {
+                if (msg.what == handlerState)
+                {
                     //voy concatenando el msj
                     String readMessage = (String) msg.obj;
                     recDataString.append(readMessage);
                     int endOfLineIndex = recDataString.indexOf("\r\n");
 
                     //cuando recibo toda una linea la muestro en el layout
-                    if (endOfLineIndex > 0) {
+                    if (endOfLineIndex > 0)
+                    {
                         String dataInPrint = recDataString.substring(0, endOfLineIndex);
                         txtPotenciometro.setText(dataInPrint);
 
@@ -155,8 +172,7 @@ public class activity_comunicacion extends Activity {
         @Override
         public void onClick(View v) {
             mConnectedThread.write("1");    // Send "1" via Bluetooth
-            showToast("Encender el LED");
-        }
+            showToast("Encender el LED");        }
     };
 
     //Listener del boton encender que envia  msj para Apagar Led a Arduino atraves del Bluethoot
@@ -176,39 +192,44 @@ public class activity_comunicacion extends Activity {
     //******************************************** Hilo secundario del Activity**************************************
     //*************************************** recibe los datos enviados por el HC05**********************************
 
-    private class ConnectedThread extends Thread {
+    private class ConnectedThread extends Thread
+    {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
 
         //Constructor de la clase del hilo secundario
-        public ConnectedThread(BluetoothSocket socket) {
+        public ConnectedThread(BluetoothSocket socket)
+        {
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
 
-            try {
+            try
+            {
                 //Create I/O streams for connection
                 tmpIn = socket.getInputStream();
                 tmpOut = socket.getOutputStream();
-            } catch (IOException e) {
-            }
+            } catch (IOException e) { }
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
         }
 
         //metodo run del hilo, que va a entrar en una espera activa para recibir los msjs del HC05
-        public void run() {
+        public void run()
+        {
             byte[] buffer = new byte[256];
             int bytes;
 
             //el hilo secundario se queda esperando mensajes del HC05
-            while (true) {
-                try {
+            while (true)
+            {
+                try
+                {
                     //se leen los datos del Bluethoot
                     bytes = mmInStream.read(buffer);
                     String readMessage = new String(buffer, 0, bytes);
 
-                    //se muestran en el layout de la activity, utilizando el handler del hilo
+                     //se muestran en el layout de la activity, utilizando el handler del hilo
                     // principal antes mencionado
                     bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {

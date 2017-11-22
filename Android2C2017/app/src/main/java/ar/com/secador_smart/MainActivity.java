@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,12 +16,16 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -31,7 +36,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private TextView proximity;
     private TextView luminosidad;
     private TextView detecta;
-    private static final int SHAKE_THRESHOLD = 800;
+    private static final int ACC = 20;
     private static float last_x = 0;
     private static float last_z = 0;
     private static float last_y = 0;
@@ -43,6 +48,17 @@ public class MainActivity extends Activity implements SensorEventListener {
     private ProgressDialog mProgressDlg;
     private ArrayList<BluetoothDevice> mDeviceList = new ArrayList<BluetoothDevice>();
     private BluetoothAdapter mBluetoothAdapter;
+
+    TextView txtPotenciometro;
+
+    Handler bluetoothIn;
+    final int handlerState = 0; //used to identify handler message
+
+    private BluetoothAdapter btAdapter = null;
+    private BluetoothSocket btSocket = null;
+    private StringBuilder recDataString = new StringBuilder();
+
+    private ConnectedThread mConnectedThread;
 
     /**
      * Called when the activity is first created.
@@ -106,6 +122,13 @@ public class MainActivity extends Activity implements SensorEventListener {
         //se define (registra) el handler que captura los broadcast anteriormente mencionados.
         registerReceiver(mReceiver, filter);
 
+        //obtengo el adaptador del bluethoot
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        //defino el Handler de comunicacion entre el hilo Principal  el secundario.
+        //El hilo secundario va a mostrar informacion al layout atraves utilizando indeirectamente a este handler
+        bluetoothIn = Handler_Msg_Hilo_Principal();
+
     }
 
     // Metodo para iniciar el acceso a los sensores
@@ -138,46 +161,38 @@ public class MainActivity extends Activity implements SensorEventListener {
 
             switch (event.sensor.getType()) {
                 case Sensor.TYPE_ACCELEROMETER:
-                    long curTime = System.currentTimeMillis();
-                    long lastUpdate = 0;
-                    // only allow one update every 100ms.
-                    if ((curTime - lastUpdate) > 100) {
-                        long diffTime = (curTime - lastUpdate);
-                        lastUpdate = curTime;
-
-                        float x = event.values[0];
-                        float y = event.values[1];
-                        float z = event.values[2];
-
-                        float speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-
-                        if (speed > SHAKE_THRESHOLD) {
-                            Log.d("sensor", "shake detected w/ speed: " + speed);
+                    if ((Math.abs(event.values[0]) > ACC || Math.abs(event.values[1]) > ACC || Math.abs(event.values[2]) > ACC)){
+                            Log.d("sensor", "shake detected");
+                            showToast("Shake detectado");
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("shake");
                         }
-                        last_x = x;
-                        last_y = y;
-                        last_z = z;
-                    }
+                        }
+
                     break;
 
+
                 case Sensor.TYPE_PROXIMITY:
-                    //txt += "proximity\n";
-                    //txt += event.values[0] + "\n";
-
-                    // proximity.setText(txt);
-
                     // Si detecta 0 lo represento
                     if (event.values[0] < 100) {
-                        detecta.setBackgroundColor(Color.parseColor("#cf091c"));
-                        detecta.setText("Proximidad Detectada");
+                        showToast("Proximidad Detectada");
+                        Log.d("sensor", "detecte proximidad");
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("proximidad");
+                        }
+
                     }
                     break;
 
                 case Sensor.TYPE_LIGHT:
-                    // txt += "Luminosidad\n";
-                    // txt += event.values[0] + " Lux \n";
+                   if (event.values[0] < 20){
+                        showToast("muy poca luz, prendo LEDS");
+                        Log.d("sensor", "detecte luz menor a 20");
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("luminosidad");
+                        }
+                    }
 
-                    // luminosidad.setText(txt);
                     break;
             }
         }
@@ -274,6 +289,7 @@ public class MainActivity extends Activity implements SensorEventListener {
                 //Si esta activado
                 if (state == BluetoothAdapter.STATE_ON) {
                     showToast("Activar");
+                    Log.d("blut", "active blut");
 
                     showEnabled();
                 }
@@ -282,7 +298,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
                 //Creo la lista donde voy a mostrar los dispositivos encontrados
                 mDeviceList = new ArrayList<BluetoothDevice>();
-
+                Log.d("blut", "empiezo busqueda");
                 //muestro el cuadro de dialogo de busqueda
                 mProgressDlg.show();
             }
@@ -296,6 +312,7 @@ public class MainActivity extends Activity implements SensorEventListener {
                 Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class);
 
                 newIntent.putParcelableArrayListExtra("device.list", mDeviceList);
+                Log.d("blut", "termine busqueda");
 
                 startActivity(newIntent);
             }
@@ -303,7 +320,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 //Se lo agregan sus datos a una lista de dispositivos encontrados
                 BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-
+                Log.d("blut", "encontré un dispositivo" + device.getName());
                 mDeviceList.add(device);
                 showToast("Dispositivo Encontrado:" + device.getName());
             }
@@ -366,4 +383,91 @@ public class MainActivity extends Activity implements SensorEventListener {
             mBluetoothAdapter.cancelDiscovery();
         }
     };
+    private Handler Handler_Msg_Hilo_Principal ()
+    {
+        return new Handler() {
+            public void handleMessage(android.os.Message msg)
+            {
+                //si se recibio un msj del hilo secundario
+                if (msg.what == handlerState)
+                {
+                    //voy concatenando el msj
+                    String readMessage = (String) msg.obj;
+                    recDataString.append(readMessage);
+                    int endOfLineIndex = recDataString.indexOf("\r\n");
+
+                    //cuando recibo toda una linea la muestro en el layout
+                    if (endOfLineIndex > 0)
+                    {
+                        String dataInPrint = recDataString.substring(0, endOfLineIndex);
+                        txtPotenciometro.setText(dataInPrint);
+
+                        recDataString.delete(0, recDataString.length());
+                    }
+                }
+            }
+        };
+
+    }
+
+    private class ConnectedThread extends Thread
+    {
+        private final InputStream mmInStream;
+        private final OutputStream mmOutStream;
+
+        //Constructor de la clase del hilo secundario
+        public ConnectedThread(BluetoothSocket socket)
+        {
+            InputStream tmpIn = null;
+            OutputStream tmpOut = null;
+
+            try
+            {
+                //Create I/O streams for connection
+                tmpIn = socket.getInputStream();
+                tmpOut = socket.getOutputStream();
+            } catch (IOException e) { }
+
+            mmInStream = tmpIn;
+            mmOutStream = tmpOut;
+        }
+
+        //metodo run del hilo, que va a entrar en una espera activa para recibir los msjs del HC05
+        public void run()
+        {
+            byte[] buffer = new byte[256];
+            int bytes;
+
+            //el hilo secundario se queda esperando mensajes del HC05
+            while (true)
+            {
+                try
+                {
+                    //se leen los datos del Bluethoot
+                    bytes = mmInStream.read(buffer);
+                    String readMessage = new String(buffer, 0, bytes);
+
+                    //se muestran en el layout de la activity, utilizando el handler del hilo
+                    // principal antes mencionado
+                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                } catch (IOException e) {
+                    break;
+                }
+            }
+        }
+
+
+        //write method
+        public void write(String input) {
+            byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
+            try {
+                mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
+            } catch (IOException e) {
+                //if you cannot write, close the application
+                showToast("La conexion fallo");
+                finish();
+
+            }
+        }
+    }
 }

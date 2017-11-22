@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="es.epinanab.sensores.test">
+    package="ar.com.secador_smart.test">
 
-    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21" />
 
     <application>
         <uses-library android:name="android.test.runner" />
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="es.epinanab.sensores"
+                     android:targetPackage="ar.com.secador_smart"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for es.epinanab.sensores"/>
+                     android:label="Tests for ar.com.secador_smart"/>
 </manifest>

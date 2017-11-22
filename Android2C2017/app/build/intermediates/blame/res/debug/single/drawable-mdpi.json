@@ -1,10 +1,6 @@
 [
     {
-        "merged": "C:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\icon.png",
-        "source": "C:\\Material-SOA\\Ejemplos\\Android\\Sensores\\sensores1\\app\\src\\main\\res\\drawable-mdpi\\icon.png"
-    },
-    {
-        "merged": "C:\\Users\\esteban.luciano\\Downloads\\Facultad\\SOA\\android\\ejemplos\\Android\\Sensores\\sensores1\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\icon.png",
-        "source": "C:\\Users\\esteban.luciano\\Downloads\\Facultad\\SOA\\android\\ejemplos\\Android\\Sensores\\sensores1\\app\\src\\main\\res\\drawable-mdpi\\icon.png"
+        "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\icon.png",
+        "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable-mdpi\\icon.png"
     }
 ]

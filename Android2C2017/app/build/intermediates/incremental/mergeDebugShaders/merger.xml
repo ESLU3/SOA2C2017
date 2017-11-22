@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\esteban.luciano\Downloads\Facultad\SOA\android\ejemplos\Android\Sensores\sensores1\app\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\debug\shaders"/></dataSet></merger>
