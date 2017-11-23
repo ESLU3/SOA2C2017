@@ -162,10 +162,10 @@ public class MainActivity extends Activity implements SensorEventListener {
             switch (event.sensor.getType()) {
                 case Sensor.TYPE_ACCELEROMETER:
                     if ((Math.abs(event.values[0]) > ACC || Math.abs(event.values[1]) > ACC || Math.abs(event.values[2]) > ACC)){
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("1");
                             Log.d("sensor", "shake detected");
                             showToast("Shake detectado");
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("shake");
                         }
                         }
 
@@ -175,10 +175,10 @@ public class MainActivity extends Activity implements SensorEventListener {
                 case Sensor.TYPE_PROXIMITY:
                     // Si detecta 0 lo represento
                     if (event.values[0] < 100) {
-                        showToast("Proximidad Detectada");
-                        Log.d("sensor", "detecte proximidad");
                         if (mConnectedThread != null) {
-                            mConnectedThread.write("proximidad");
+                            mConnectedThread.write("2");
+                            showToast("Proximidad Detectada");
+                            Log.d("sensor", "detecte proximidad");
                         }
 
                     }
@@ -186,10 +186,10 @@ public class MainActivity extends Activity implements SensorEventListener {
 
                 case Sensor.TYPE_LIGHT:
                    if (event.values[0] < 20){
-                        showToast("muy poca luz, prendo LEDS");
-                        Log.d("sensor", "detecte luz menor a 20");
                         if (mConnectedThread != null) {
-                            mConnectedThread.write("luminosidad");
+                            mConnectedThread.write("3");
+                            showToast("muy poca luz, prendo LEDS");
+                            Log.d("sensor", "detecte luz menor a 20");
                         }
                     }
 

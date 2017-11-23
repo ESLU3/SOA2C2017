@@ -2,6 +2,8 @@
 #define DHTTYPE DHT22
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+#include <SoftwareSerial.h>
+SoftwareSerial bluetooth(10, 11); // RX, TX
 //                    addr, en,rw,rs,d4,d5,d6,d7,bl,blpol
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // 0x27 es la direccion del i2c del lcd
 
@@ -11,17 +13,24 @@ const int pinDHT = 5;           //Pin del DHT
 DHT sensorDeHumedad(pinDHT, DHTTYPE);
 const int pinTemperatura = A0;  //Pin del lm35
 const int pinFan = 12;
+const int pinHeater = 7;
 
+const long intervaloPantalla = 2000;
+unsigned long tiempoPantallaViejo = 0;
 
 int iluminacion;
 bool procesoTerminado = false;
+bool heaterOn = false;
 int contador = 0;
+
 
 void setup() {
   Serial.begin(9600);
   lcd.begin(20, 4);        // 4 lineas con 20 caracteres cada una
   sensorDeHumedad.begin();
+  bluetooth.begin(9600);
   pinMode(pinLed , OUTPUT);
+  pinMode(pinHeater, OUTPUT);
   pinMode(pinLuz, INPUT);
   lcd.clear();
 }
@@ -33,25 +42,30 @@ void loop() {
   float temperatura = (5.0 * analogRead(A0) * 100.0) / 1024;
   iluminacion = analogRead(pinLuz);
 
-  if (procesoTerminado == false && contador != 1000) {
+  unsigned long tiempoPantallaActual = millis();
+
+  if (procesoTerminado == false && tiempoPantallaActual - tiempoPantallaViejo >= intervaloPantalla) {
+    tiempoPantallaViejo = tiempoPantallaActual;
     lcd.clear();
-    lcd.setCursor(1, 0); // 3 caracter, linea 0
+    lcd.setCursor(1, 0);
     lcd.print("Humedad: " );
     lcd.setCursor(14, 0);
     lcd.print(humedad);
-    lcd.setCursor(1, 1); // 3 caracter, linea 0
+    lcd.setCursor(1, 1);
     lcd.print("Temperatura: " );
     lcd.setCursor(14, 1);
     lcd.print(temperatura);
-    lcd.setCursor(1, 2); // 3 caracter, linea 0
+    lcd.setCursor(1, 2);
     lcd.print("Iluminacion: " );
     lcd.setCursor(14, 2);
     lcd.print(iluminacion);
   }
-  if ( humedad >= 75 ) {
+  if ( humedad >= 75) {
     procesoTerminado = false;
-    analogWrite(pinFan, 255);                    // Encender el Ventilador a velocidad maxima
-    Serial.print("falta el cal");                // Encender el Calentador
+    digitalWrite(pinLed, LOW);                        // Apagar LED indicando que no finalizo el proceso
+    analogWrite(pinFan, 255);                         // Encender el Ventilador a velocidad maxima
+    digitalWrite(pinHeater, HIGH);                    // Detener el Calentador
+    heaterOn = true;
   } else {
     if (temperatura < 20) {
       procesoTerminado = false;
@@ -66,16 +80,17 @@ void loop() {
   }
   if (humedad <= 30 && temperatura >= 22 && iluminacion >= 120) {   // Falta terminar el secado pero no es necesario continuar con el calentador encendido
     procesoTerminado = false;
-    Serial.print("falta el cal");                // Detener el calentador
+    digitalWrite(pinHeater, LOW);                 // Detener el Calentador
+    heaterOn = false;
   }
 
   if (humedad <= 20) {                            // Se termina el secado
-    analogWrite(pinFan, 0);                      // Detener el ventilador
-    Serial.print("falta el cal");                // Detener el Calentador
-    digitalWrite(pinLed, HIGH);                  // Encender LED indicando que finalizo el proceso
+    analogWrite(pinFan, 0);                       // Detener el ventilador
+    digitalWrite(pinHeater, LOW);                 // Detener el Calentador
+    heaterOn = false;
+    digitalWrite(pinLed, HIGH);                   // Encender LED indicando que finalizo el proceso
 
-
-    for (int i = 0; i < 3; i++)                  // Blink al lcd
+    for (int i = 0; i < 3; i++)                   // Blink al lcd
     {
       lcd.backlight();
       delay(250);
@@ -84,25 +99,55 @@ void loop() {
     }
     lcd.backlight();
     lcd.clear();
-    lcd.setCursor(2, 1); // 3 caracter, linea 0
+    lcd.setCursor(2, 1);
     lcd.print("Proceso de Secado");
-    lcd.setCursor(4, 2); // 3 caracter, linea 0
+    lcd.setCursor(4, 2);
     lcd.print("COMPLETADO");
     procesoTerminado = true;
   }
 
-  if (contador != 1000) {
-    contador++;
-  } else
-  {
-    contador = 0;
+  if (bluetooth.available()) {
+    String solicitud = bluetooth.readString();
+
+    if (solicitud == "shake") {
+      lcd.setCursor(0, 3);
+      lcd.print("shake reconocido");
+      for (int i = 0; i < 3; i++)                  // Blink al lcd
+      {
+        lcd.backlight();
+        delay(250);
+        lcd.noBacklight();
+        delay(250);
+      }
+      lcd.backlight();
+      lcd.setCursor(0, 3);
+      lcd.print("                     ");
+    }
+    if (solicitud == "proximidad") {
+      digitalWrite(pinHeater, HIGH);
+      delay(200);
+      digitalWrite(pinHeater, LOW);
+      delay(200);
+      digitalWrite(pinHeater, HIGH);
+      delay(200);
+      if (heaterOn == false) {
+        digitalWrite(pinHeater, LOW);
+      }
+    }
+    if (solicitud == "luminosidad") {
+      digitalWrite(pinLed, LOW);
+      delay(200);
+      digitalWrite(pinLed, HIGH);
+      delay(200);
+      digitalWrite(pinLed, LOW);
+    }
+
   }
-  
-  
+
   //probarVentilador();
   //probarHumedad();
   //probarTemperatura();
- // probarLed();
+  //probarLed();
   //probarLuz();
 
 }
@@ -149,7 +194,7 @@ void mostrarHumedadYTemperatura(float humedad, float temperatura) {
   //////////////////////////////////////////////////Humedad
   Serial.print("Humedad Relativa: ");
   Serial.print(humedad);//Escribe la humedad
-  Serial.println(" %");
+  Serial.println(" % ");
   ///////////////////////////////////////////////////Temperatura
   Serial.print("Temperatura: ");
   Serial.print(temperatura);//Escribe la temperatura
@@ -162,9 +207,9 @@ void encenderVentilador(int pinFan, int velocidad) {
 
 void probarVentilador() {
   encenderVentilador(pinFan, 255);
-  delay(5000);
-  encenderVentilador(pinFan, 0);
-  delay(5000);
+  //delay(5000);
+  //encenderVentilador(pinFan, 0);
+  //delay(5000);
 }
 
 
