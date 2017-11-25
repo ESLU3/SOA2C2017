@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
-public class MainActivity extends Activity implements SensorEventListener {
+public class MainActivity extends Activity  {
     private SensorManager mSensorManager;
     //private TextView      acelerometro;
     private TextView proximity;
@@ -131,91 +131,22 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     }
 
-    // Metodo para iniciar el acceso a los sensores
-    protected void Ini_Sensores() {
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    // Metodo para parar la escucha de los sensores
-    private void Parar_Sensores() {
-
-        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
-        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
-        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
-    }
-
-    // Metodo que escucha el cambio de sensibilidad de los sensores
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-
-    // Metodo que escucha el cambio de los sensores
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-
-        synchronized (this) {
-            // Log.d("sensor", event.sensor.getName());
-
-            switch (event.sensor.getType()) {
-                case Sensor.TYPE_ACCELEROMETER:
-                    if ((Math.abs(event.values[0]) > ACC || Math.abs(event.values[1]) > ACC || Math.abs(event.values[2]) > ACC)){
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("1");
-                            Log.d("sensor", "shake detected");
-                            showToast("Shake detectado");
-                        }
-                        }
-
-                    break;
-
-
-                case Sensor.TYPE_PROXIMITY:
-                    // Si detecta 0 lo represento
-                    if (event.values[0] < 100) {
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("2");
-                            showToast("Proximidad Detectada");
-                            Log.d("sensor", "detecte proximidad");
-                        }
-
-                    }
-                    break;
-
-                case Sensor.TYPE_LIGHT:
-                   if (event.values[0] < 20){
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("3");
-                            showToast("muy poca luz, prendo LEDS");
-                            Log.d("sensor", "detecte luz menor a 20");
-                        }
-                    }
-
-                    break;
-            }
-        }
-    }
 
     @Override
     protected void onStop() {
 
-        Parar_Sensores();
         unregisterReceiver(mReceiver);
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        Parar_Sensores();
         unregisterReceiver(mReceiver);
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        Parar_Sensores();
         if (mBluetoothAdapter != null) {
             if (mBluetoothAdapter.isDiscovering()) {
                 mBluetoothAdapter.cancelDiscovery();
@@ -226,8 +157,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     @Override
     protected void onRestart() {
-        Ini_Sensores();
-
         super.onRestart();
     }
 
@@ -235,7 +164,6 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onResume() {
         super.onResume();
 
-        Ini_Sensores();
     }
 
     private void showEnabled() {

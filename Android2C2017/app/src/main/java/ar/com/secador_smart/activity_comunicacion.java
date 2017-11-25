@@ -5,8 +5,13 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,9 +27,17 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class activity_comunicacion extends Activity
+public class activity_comunicacion extends Activity implements SensorEventListener
 {
-
+    private SensorManager mSensorManager;
+    //private TextView      acelerometro;
+    private TextView proximity;
+    private TextView luminosidad;
+    private TextView detecta;
+    private static final int ACC = 20;
+    private static float last_x = 0;
+    private static float last_z = 0;
+    private static float last_y = 0;
     Button btnApagar;
     Button btnEncender;
     TextView txtPotenciometro;
@@ -44,11 +57,81 @@ public class activity_comunicacion extends Activity
     // String for MAC address del Hc05
     private static String address = null;
 
+
+    protected void Ini_Sensores() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    // Metodo para parar la escucha de los sensores
+    private void Parar_Sensores() {
+
+        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
+        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
+    }
+
+    // Metodo que escucha el cambio de sensibilidad de los sensores
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    // Metodo que escucha el cambio de los sensores
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+        synchronized (this) {
+            // Log.d("sensor", event.sensor.getName());
+
+            switch (event.sensor.getType()) {
+                case Sensor.TYPE_ACCELEROMETER:
+                    if ((Math.abs(event.values[0]) > ACC || Math.abs(event.values[1]) > ACC || Math.abs(event.values[2]) > ACC)){
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("1");
+                            Log.d("sensor", "shake detected");
+                            showToast("Shake detectado");
+                        }
+                    }
+
+                    break;
+
+
+                case Sensor.TYPE_PROXIMITY:
+                    // Si detecta 0 lo represento
+                    if (event.values[0] < 20) {
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("2");
+                            showToast("Proximidad Detectada");
+                            Log.d("sensor", "detecte proximidad");
+                        }
+
+                    }
+                    break;
+
+                case Sensor.TYPE_LIGHT:
+                    if (event.values[0] < 5){
+                        if (mConnectedThread != null) {
+                            mConnectedThread.write("3");
+                            showToast("muy poca luz, prendo LEDS");
+                            Log.d("sensor", "detecte luz menor a 20");
+                        }
+                    }
+
+                    break;
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunicacion);
+
+        // Accedemos al servicio de sensores
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         //Se definen los componentes del layout
         btnApagar=(Button)findViewById(R.id.btnApagar);
@@ -74,6 +157,7 @@ public class activity_comunicacion extends Activity
     public void onResume() {
         super.onResume();
 
+        Ini_Sensores();
         //Obtengo el parametro, aplicando un Bundle, que me indica la Mac Adress del HC05
         Intent intent=getIntent();
         Bundle extras=intent.getExtras();
@@ -118,12 +202,23 @@ public class activity_comunicacion extends Activity
         mConnectedThread.write("x");
     }
 
+    @Override
+    protected void onStop() {
 
+        Parar_Sensores();
+        super.onStop();
+    }
+    @Override
+    protected void onDestroy() {
+        Parar_Sensores();
+        super.onDestroy();
+    }
     @Override
     //Cuando se ejecuta el evento onPause se cierra el socket Bluethoot, para no recibiendo datos
     public void onPause()
     {
         super.onPause();
+        Parar_Sensores();
         try
         {
             //Don't leave Bluetooth sockets open when leaving activity
@@ -132,7 +227,12 @@ public class activity_comunicacion extends Activity
             //insert code to deal with this
         }
     }
+    @Override
+    protected void onRestart() {
+        Ini_Sensores();
 
+        super.onRestart();
+    }
     //Metodo que crea el socket bluethoot
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
 
