@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <!-- - Defino la activity que se comunica, transfierendo datos de los sensores, con Arduino -->
-        <activity android:name="ar.com.secador_smart.activity_comunicacion" />
+        <activity android:name="ar.com.secador_smart.ComunicacionActivity" />
     </application>
 
 </manifest>

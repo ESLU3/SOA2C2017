@@ -91,7 +91,7 @@ action#android.intent.action.VIEW
 ADDED from C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:39:17-69
 	android:name
 		ADDED from C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:39:25-66
-activity#ar.com.secador_smart.activity_comunicacion
-ADDED from C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:43:9-68
+activity#ar.com.secador_smart.ComunicacionActivity
+ADDED from C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:43:9-67
 	android:name
-		ADDED from C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:43:19-56
+		ADDED from C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:43:19-55

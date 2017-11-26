@@ -27,7 +27,7 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class activity_comunicacion extends Activity implements SensorEventListener
+public class ComunicacionActivity extends Activity implements SensorEventListener
 {
     private SensorManager mSensorManager;
     //private TextView      acelerometro;
@@ -113,8 +113,9 @@ public class activity_comunicacion extends Activity implements SensorEventListen
                 case Sensor.TYPE_LIGHT:
                     if (event.values[0] < 5){
                         if (mConnectedThread != null) {
+
                             mConnectedThread.write("3");
-                            showToast("muy poca luz, prendo LEDS");
+                            showToast("Poca luz detectada");
                             Log.d("sensor", "detecte luz menor a 20");
                         }
                     }
