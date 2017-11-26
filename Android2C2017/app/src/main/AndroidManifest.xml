@@ -9,7 +9,6 @@
         android:targetSdkVersion="21" />
 
     <!-- - Aca se indican los permisos que va a necesitar la aplicacion -->
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

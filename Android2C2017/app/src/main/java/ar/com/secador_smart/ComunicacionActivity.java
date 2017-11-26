@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,17 +31,14 @@ import java.util.UUID;
 public class ComunicacionActivity extends Activity implements SensorEventListener
 {
     private SensorManager mSensorManager;
-    //private TextView      acelerometro;
-    private TextView proximity;
-    private TextView luminosidad;
-    private TextView detecta;
-    private static final int ACC = 20;
+    private static final int ACC = 20; //variable para umbral del Shake
     private static float last_x = 0;
     private static float last_z = 0;
     private static float last_y = 0;
-    Button btnApagar;
-    Button btnEncender;
-    TextView txtPotenciometro;
+    private TextView txtComunicacionPaired;
+    private TextView txtComunicacionDevice;
+    private TextView txtSensorDetected;
+
 
     Handler bluetoothIn;
     final int handlerState = 0; //used to identify handler message
@@ -49,15 +47,16 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
     private BluetoothSocket btSocket = null;
     private StringBuilder recDataString = new StringBuilder();
 
+    //Variable para el hilo que manejará la comunicacion
     private ConnectedThread mConnectedThread;
 
-    // SPP UUID service  - Funciona en la mayoria de los dispositivos
+    // SPP UUID service
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    // String for MAC address del Hc05
+    // variable donde se guardará la direccion MAC del HC06 del Arduino
     private static String address = null;
 
-
+    //Metodo para registrar los sensosres en el Manager
     protected void Ini_Sensores() {
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
@@ -82,8 +81,7 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        synchronized (this) {
-            // Log.d("sensor", event.sensor.getName());
+        synchronized (this) { //esto implica que solo escuchará de a un sensor a la vez
 
             switch (event.sensor.getType()) {
                 case Sensor.TYPE_ACCELEROMETER:
@@ -91,7 +89,7 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
                         if (mConnectedThread != null) {
                             mConnectedThread.write("1");
                             Log.d("sensor", "shake detected");
-                            showToast("Shake detectado");
+                            txtSensorDetected.setText("Shake detectado");
                         }
                     }
 
@@ -99,12 +97,11 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
 
 
                 case Sensor.TYPE_PROXIMITY:
-                    // Si detecta 0 lo represento
                     if (event.values[0] < 20) {
                         if (mConnectedThread != null) {
                             mConnectedThread.write("2");
-                            showToast("Proximidad Detectada");
-                            Log.d("sensor", "detecte proximidad");
+                            txtSensorDetected.setText("Proximidad Detectada");
+                            Log.d("sensor", "Proximidad Detectada");
                         }
 
                     }
@@ -113,10 +110,9 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
                 case Sensor.TYPE_LIGHT:
                     if (event.values[0] < 5){
                         if (mConnectedThread != null) {
-
                             mConnectedThread.write("3");
-                            showToast("Poca luz detectada");
-                            Log.d("sensor", "detecte luz menor a 20");
+                            txtSensorDetected.setText("Poca luz detectada");
+                            Log.d("sensor", "Poca luz detectada");
                         }
                     }
 
@@ -135,20 +131,21 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         //Se definen los componentes del layout
-        btnApagar=(Button)findViewById(R.id.btnApagar);
-        btnEncender=(Button)findViewById(R.id.btnEncender);
-        txtPotenciometro=(TextView)findViewById(R.id.txtValorPotenciometro);
+        txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
+        txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
+        txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
 
         //obtengo el adaptador del bluethoot
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        //defino el Handler de comunicacion entre el hilo Principal  el secundario.
-        //El hilo secundario va a mostrar informacion al layout atraves utilizando indeirectamente a este handler
-        bluetoothIn = Handler_Msg_Hilo_Principal();
+        Intent intent=getIntent();
+        Bundle extras=intent.getExtras();
 
-        //defino los handlers para los botones Apagar y encender
-        btnEncender.setOnClickListener(btnEncenderListener);
-        btnApagar.setOnClickListener(btnApagarListener);
+        address= extras.getString("Dispositivo conectado");
+
+        BluetoothDevice device = btAdapter.getRemoteDevice(address);
+
+        txtComunicacionDevice.setText(device.getName());
 
     }
 
@@ -163,7 +160,7 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
         Intent intent=getIntent();
         Bundle extras=intent.getExtras();
 
-        address= extras.getString("Direccion_Bluethoot");
+        address= extras.getString("Dispositivo conectado");
 
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
@@ -239,51 +236,6 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
 
         return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
     }
-
-    //Handler que sirve que permite mostrar datos en el Layout al hilo secundario
-    private Handler Handler_Msg_Hilo_Principal ()
-    {
-        return new Handler() {
-            public void handleMessage(android.os.Message msg)
-            {
-                //si se recibio un msj del hilo secundario
-                if (msg.what == handlerState)
-                {
-                    //voy concatenando el msj
-                    String readMessage = (String) msg.obj;
-                    recDataString.append(readMessage);
-                    int endOfLineIndex = recDataString.indexOf("\r\n");
-
-                    //cuando recibo toda una linea la muestro en el layout
-                    if (endOfLineIndex > 0)
-                    {
-                        String dataInPrint = recDataString.substring(0, endOfLineIndex);
-                        txtPotenciometro.setText(dataInPrint);
-
-                        recDataString.delete(0, recDataString.length());
-                    }
-                }
-            }
-        };
-
-    }
-
-    //Listener del boton encender que envia  msj para enceder Led a Arduino atraves del Bluethoot
-    private View.OnClickListener btnEncenderListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            mConnectedThread.write("1");    // Send "1" via Bluetooth
-            showToast("Encender el LED");        }
-    };
-
-    //Listener del boton encender que envia  msj para Apagar Led a Arduino atraves del Bluethoot
-    private View.OnClickListener btnApagarListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            mConnectedThread.write("2");    // Send "0" via Bluetooth
-            showToast("Apagar el LED");
-        }
-    };
 
 
     private void showToast(String message) {

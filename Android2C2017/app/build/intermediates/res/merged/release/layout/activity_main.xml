@@ -6,33 +6,40 @@
     android:padding="@dimen/activity_vertical_margin">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <TextView
         android:id="@+id/txtEstado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="17sp"
+        android:text="@string/text_bluetooth_off"
         android:textColor="#ff0000"
-        android:text="@string/text_bluetooth_off" />
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/btnActivar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/text_enable" />
-    
+
     <Button
         android:id="@+id/btnEmparejar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:enabled="false"
         android:text="@string/text_view_paired" />
-    
+
     <Button
         android:id="@+id/btnBuscar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:enabled="false"
         android:text="@string/text_scan_devices" />

@@ -135,7 +135,7 @@ public class DeviceListActivity extends Activity {
                     //Para eso se le envia como parametro la direccion(MAC) del bluethoot Arduino
                     String direccionBluethoot = dispositivo.getAddress();
                     Intent i = new Intent(DeviceListActivity.this, ComunicacionActivity.class);
-                    i.putExtra("Direccion_Bluethoot", direccionBluethoot);
+                    i.putExtra("Dispositivo conectado", direccionBluethoot);
 
                     startActivity(i);
 
