@@ -3,26 +3,24 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <SoftwareSerial.h>
-SoftwareSerial bluetooth(10, 11); // RX, TX
+SoftwareSerial bluetooth(10, 11); // RX, TX (contrario)
 //                    addr, en,rw,rs,d4,d5,d6,d7,bl,blpol
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // 0x27 es la direccion del i2c del lcd
 
-const int pinLuz = A1;          //Pin del LDR
-const int pinLed = 3;           //Pin del Led
-const int pinDHT = 5;           //Pin del DHT
-DHT sensorDeHumedad(pinDHT, DHTTYPE);
-const int pinTemperatura = A0;  //Pin del lm35
-const int pinFan = 12;
-const int pinHeater = 7;
+const int pinLuz = A1;                //Pin del LDR
+const int pinTemperatura = A0;        //Pin del Lm35
+const int pinLed = 3;                 //Pin del Led
+const int pinFan = 12;                //Pin del Fan
+const int pinHeater = 8;              //Pin del Heater
+const int pinDHT = 5;                 //Pin del DHT
+DHT sensorDeHumedad(pinDHT, DHTTYPE); //Inicializar el sensor con el pin y el tipo(Dht22)
 
-const long intervaloPantalla = 2000;
+const long intervaloPantalla = 5000;
 unsigned long tiempoPantallaViejo = 0;
-
 int iluminacion;
 bool procesoTerminado = false;
 bool heaterOn = false;
-int contador = 0;
-
+float temperatura;
 
 void setup() {
   Serial.begin(9600);
@@ -37,15 +35,14 @@ void setup() {
 
 void loop() {
 
-  //delay(3000);
   float humedad = leerHumedad();
-  float temperatura = (5.0 * analogRead(A0) * 100.0) / 1024;
+  temperatura = (5.0 * analogRead(A0) * 100.0) / 1024;
   iluminacion = analogRead(pinLuz);
-
   unsigned long tiempoPantallaActual = millis();
 
   if (procesoTerminado == false && tiempoPantallaActual - tiempoPantallaViejo >= intervaloPantalla) {
     tiempoPantallaViejo = tiempoPantallaActual;
+    temperatura = (5.0 * analogRead(A0) * 100.0) / 1024;
     lcd.clear();
     lcd.setCursor(1, 0);
     lcd.print("Humedad: " );
@@ -60,11 +57,13 @@ void loop() {
     lcd.setCursor(14, 2);
     lcd.print(iluminacion);
   }
-  if ( humedad >= 75) {
+  if ( humedad >= 40) {
     procesoTerminado = false;
-    digitalWrite(pinLed, LOW);                        // Apagar LED indicando que no finalizo el proceso
+    digitalWrite(pinLed, LOW);                        // Apagar LED que indica que no finalizo el proceso
+
     analogWrite(pinFan, 255);                         // Encender el Ventilador a velocidad maxima
-    digitalWrite(pinHeater, HIGH);                    // Detener el Calentador
+
+    digitalWrite(pinHeater, HIGH);                    // Encender el Calentador
     heaterOn = true;
   } else {
     if (temperatura < 20) {
@@ -72,7 +71,7 @@ void loop() {
       analogWrite(pinFan, 255);                  // Encender el Ventilador a velocidad maxima
     }
     else {
-      if (temperatura >= 20 && humedad <= 75) {  // Esta para describir bien el proceso
+      if (temperatura >= 20 && humedad <= 40) {  // Esta para describir bien el proceso
         procesoTerminado = false;
         analogWrite(pinFan, 150);                // Encender el Ventilador a velocidad media
       }
@@ -107,11 +106,16 @@ void loop() {
   }
 
   if (bluetooth.available()) {
-    String solicitud = bluetooth.readString();
 
-    if (solicitud == "shake") {
+    String solicitud = bluetooth.readString();
+    bool shake = solicitud.startsWith("1");
+    bool proximidad = solicitud.startsWith("2");
+    bool luz = solicitud.startsWith("3");
+
+    Serial.println(solicitud);
+    if (shake) {                         //SHAKE
       lcd.setCursor(0, 3);
-      lcd.print("shake reconocido");
+      lcd.print(" Shake Reconocido");
       for (int i = 0; i < 3; i++)                  // Blink al lcd
       {
         lcd.backlight();
@@ -123,7 +127,7 @@ void loop() {
       lcd.setCursor(0, 3);
       lcd.print("                     ");
     }
-    if (solicitud == "proximidad") {
+    if (proximidad) {                        //PROXI
       digitalWrite(pinHeater, HIGH);
       delay(200);
       digitalWrite(pinHeater, LOW);
@@ -134,22 +138,14 @@ void loop() {
         digitalWrite(pinHeater, LOW);
       }
     }
-    if (solicitud == "luminosidad") {
+    if (luz) {                               //LUZ
       digitalWrite(pinLed, LOW);
       delay(200);
       digitalWrite(pinLed, HIGH);
       delay(200);
       digitalWrite(pinLed, LOW);
     }
-
   }
-
-  //probarVentilador();
-  //probarHumedad();
-  //probarTemperatura();
-  //probarLed();
-  //probarLuz();
-
 }
 
 void probarLuz() {
@@ -207,9 +203,7 @@ void encenderVentilador(int pinFan, int velocidad) {
 
 void probarVentilador() {
   encenderVentilador(pinFan, 255);
-  //delay(5000);
-  //encenderVentilador(pinFan, 0);
-  //delay(5000);
+  delay(5000);
 }
 
 
