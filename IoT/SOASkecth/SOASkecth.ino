@@ -36,7 +36,8 @@ void setup() {
 void loop() {
 
   float humedad = leerHumedad();
-  temperatura = (5.0 * analogRead(A0) * 100.0) / 1024;
+  //temperatura = (5.0 * analogRead(A0) * 100.0) / 1024;
+  temperatura = leerTemperatura();
   iluminacion = analogRead(pinLuz);
   unsigned long tiempoPantallaActual = millis();
 
