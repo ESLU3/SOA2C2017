@@ -243,7 +243,6 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
     }
 
     //******************************************** Hilo secundario del Activity**************************************
-    //*************************************** recibe los datos enviados por el HC05**********************************
 
     private class ConnectedThread extends Thread
     {
