@@ -57,36 +57,7 @@ public class ComunicacionService extends Service implements SensorEventListener
 
     public ComunicacionService() {
 
-
-        handler = new Handler() {
-
-
-
-
-            //Metodo para registrar los sensosres en el Manager
-            protected void Ini_Sensores() {
-                mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
-                mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
-                mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
-            }
-
-            // Metodo para parar la escucha de los sensores
-            private void Parar_Sensores() {
-
-                mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
-                mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
-                mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
-            }
-
-            ;
-
-
-
-
-
-        };
-
-        new Thread(new Runnable() {
+       /* new Thread(new Runnable() {
             public void run() {
 
 
@@ -96,17 +67,17 @@ public class ComunicacionService extends Service implements SensorEventListener
                     e.printStackTrace();
                 }
 
-                String modifiedSentence = null;
+                String mensajeArduino = null;
 
-                ;
+
                 while (true) {
                     try {
-                        Thread.sleep(750);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    modifiedSentence = Cliente.comunicarse(Menu.ip, Menu.puerto, "z");
+                    mensajeArduino = Cliente.comunicarse(Menu.ip, Menu.puerto, "z");
                     //System.out.println("Hola " + modifiedSentence);
                     if (modifiedSentence != null) {
                         String[] separated = modifiedSentence.split("\\|");
@@ -130,7 +101,7 @@ public class ComunicacionService extends Service implements SensorEventListener
                 }
 
             }
-        }).start();
+        }).start();*/
     }
         public IBinder onBind(Intent intent) {
             return null;
@@ -140,6 +111,20 @@ public class ComunicacionService extends Service implements SensorEventListener
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
         }
+    //Metodo para registrar los sensosres en el Manager
+    protected void Ini_Sensores() {
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    // Metodo para parar la escucha de los sensores
+    private void Parar_Sensores() {
+
+        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
+        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
+    }
     // Metodo que escucha el cambio de los sensores
 
     public void onSensorChanged(SensorEvent event) {
