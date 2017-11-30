@@ -32,12 +32,13 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
 {
     private SensorManager mSensorManager;
     private static final int ACC = 20; //variable para umbral del Shake
-    private static float last_x = 0;
-    private static float last_z = 0;
-    private static float last_y = 0;
     private TextView txtComunicacionPaired;
     private TextView txtComunicacionDevice;
     private TextView txtSensorDetected;
+
+    private static float tempArduino;
+    private static float humArduino;
+    private static float luzArduino;
 
 
     Handler bluetoothIn;
@@ -266,7 +267,7 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
             mmOutStream = tmpOut;
         }
 
-        //metodo run del hilo, que va a entrar en una espera activa para recibir los msjs del HC05
+        //metodo run del hilo, que va a entrar en una espera activa para recibir los msjs del HC06
         public void run()
         {
             byte[] buffer = new byte[256];
@@ -280,10 +281,38 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
                     //se leen los datos del Bluethoot
                     bytes = mmInStream.read(buffer);
                     String readMessage = new String(buffer, 0, bytes);
+                    if (!readMessage.contentEquals("fin")) { //si el mensaje no fue de fin de proceso
+                        String[] datosArduino = readMessage.split("\\||"); //obtengo string enviado desde HC06 y hago split segun regex
+                        tempArduino = Float.parseFloat(datosArduino[0]); //obtengo temperatura desde arduino
+                        humArduino = Float.parseFloat(datosArduino[1]); //obtengo humedad desde arduino
+                        luzArduino = Float.parseFloat(datosArduino[2]); //obtengo luz desde arduino
+                        txtTempArduino.setText(tempArduino);
+                        txtHumArduino.setText(humArduino);
+                        txtLuzArduino.setText(luzArduino);
+
+                        if (humArduino > 30){
+                            if(tempArduino < 20){
+                                txtTiempoEstimado.setText("2 horas");
+                            } else {
+                                txtTiempoEstimado.setText("1 hora");
+                            }
+                        } else if (humArduino > 20){
+                            if(tempArduino < 20){
+                                txtTiempoEstimado.setText("1 hora");
+                            } else {
+                                txtTiempoEstimado.setText("Media Hora");
+                            }
+                        } else{
+                            txtTiempoEstimado.setText("Secado terminado en breve");
+                        }
+
+                    } else {
+                        //levanto notificacion proceso terminado
+                    }
 
                      //se muestran en el layout de la activity, utilizando el handler del hilo
                     // principal antes mencionado
-                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                   // bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
                     break;
                 }

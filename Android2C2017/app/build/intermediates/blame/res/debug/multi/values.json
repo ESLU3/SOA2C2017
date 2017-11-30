@@ -248,7 +248,14 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\dimens.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 92,
+                        "endColumn": 57,
+                        "endOffset": 145
+                    }
                 }
             },
             {
@@ -260,7 +267,14 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\dimens.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 151,
+                        "endColumn": 55,
+                        "endOffset": 202
+                    }
                 }
             },
             {
@@ -272,7 +286,14 @@
                     "endOffset": 215
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 50,
+                        "endOffset": 105
+                    }
                 }
             },
             {
@@ -284,7 +305,14 @@
                     "endOffset": 286
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 113,
+                        "endColumn": 70,
+                        "endOffset": 179
+                    }
                 }
             },
             {
@@ -296,7 +324,14 @@
                     "endOffset": 335
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 187,
+                        "endColumn": 48,
+                        "endOffset": 231
+                    }
                 }
             },
             {
@@ -308,7 +343,14 @@
                     "endOffset": 403
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 438,
+                        "endColumn": 67,
+                        "endOffset": 501
+                    }
                 }
             },
             {
@@ -320,7 +362,14 @@
                     "endOffset": 451
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 509,
+                        "endColumn": 47,
+                        "endOffset": 552
+                    }
                 }
             },
             {
@@ -351,7 +400,14 @@
                     "endOffset": 573
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 369,
+                        "endColumn": 65,
+                        "endOffset": 430
+                    }
                 }
             },
             {
@@ -363,7 +419,14 @@
                     "endOffset": 643
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 298,
+                        "endColumn": 69,
+                        "endOffset": 363
+                    }
                 }
             },
             {
@@ -371,25 +434,41 @@
                     "startLine": 12,
                     "startColumn": 4,
                     "startOffset": 648,
-                    "endLine": 14,
+                    "endLine": 18,
                     "endColumn": 12,
-                    "endOffset": 726
+                    "endOffset": 934
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\styles.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 192,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 484
+                    }
                 }
             },
             {
                 "to": {
-                    "startLine": 15,
+                    "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 731,
-                    "endLine": 17,
+                    "startOffset": 939,
+                    "endLine": 21,
                     "endColumn": 12,
-                    "endOffset": 798
+                    "endOffset": 1094
                 },
                 "from": {
-                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\styles.xml"
+                    "file": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 525,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 682
+                    }
                 }
             }
         ]
