@@ -6,10 +6,12 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -17,6 +19,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,14 +35,18 @@ import java.util.Set;
 public class MainActivity extends Activity  {
     //variables Bluetooth
     private TextView txtEstado;
-    private Button btnActivar;
+   /* private Button btnActivar;
     private Button btnEmparejar;
     private Button btnBuscar;
     private ProgressDialog mProgressDlg;
     private ArrayList<BluetoothDevice> mDeviceList = new ArrayList<BluetoothDevice>();
-    private BluetoothAdapter mBluetoothAdapter;
+    private BluetoothAdapter mBluetoothAdapter;*/
+    private Button btnDatos;
+    private Button btnConfig;
+    //TextView txtPotenciometro;
 
-    TextView txtPotenciometro;
+    boolean mBounded;
+    ComunicacionService mService;
 
     Handler bluetoothIn;
     final int handlerState = 0; //used to identify handler message
@@ -52,6 +59,29 @@ public class MainActivity extends Activity  {
     /**
      * Called when the activity is first created.
      */
+    ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Toast.makeText(Client.this, "Service is disconnected", 1000).show();
+            mBounded = false;
+            mServer = null;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Toast.makeText(Client.this, "Service is connected", 1000).show();
+            mBounded = true;
+            LocalBinder mLocalBinder = (LocalBinder)service;
+            mServer = mLocalBinder.getServerInstance();
+        }
+    };
+    protected void onStart() {
+        super.onStart();
+
+        Intent mIntent = new Intent(this, ComunicacionService.class);
+        bindService(mIntent, mService, BIND_AUTO_CREATE);
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +89,13 @@ public class MainActivity extends Activity  {
 
         // Defino los botones
         txtEstado = (TextView) findViewById(R.id.txtEstado);
-        btnActivar = (Button) findViewById(R.id.btnActivar);
+        /*btnActivar = (Button) findViewById(R.id.btnActivar);
         btnEmparejar = (Button) findViewById(R.id.btnEmparejar);
-        btnBuscar = (Button) findViewById(R.id.btnBuscar);
+        btnBuscar = (Button) findViewById(R.id.btnBuscar);*/
+        btnDatos = (Button) findViewById(R.id.btnDatos);
 
         //Se crea un adaptador para podermanejar el bluethoot del celular
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        /*mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         //Se Crea la ventana de dialogo que indica que se esta buscando dispositivos bluethoot
         mProgressDlg = new ProgressDialog(this);
@@ -83,22 +114,23 @@ public class MainActivity extends Activity  {
             //si el celular soporta bluethoot, se definen los listener para los botones de la activity
             btnEmparejar.setOnClickListener(btnEmparejarListener);
 
-            btnBuscar.setOnClickListener(btnBuscarListener);
+            btnBuscar.setOnClickListener(btnBuscarListener);*/
 
-            btnActivar.setOnClickListener(btnActivarListener);
+        btnDatos.setOnClickListener(btnDatosListener);
+        btnConfig.setOnClickListener(btnConfigListener);
 
             //se determina si esta activado el bluethoot
-            if (mBluetoothAdapter.isEnabled()) {
+           /* if (mBluetoothAdapter.isEnabled()) {
                 //se informa si esta habilitado
                 showEnabled();
             } else {
                 //se informa si esta deshabilitado
                 showDisabled();
             }
-        }
+        }*/
 
         //se definen un broadcastReceiver que captura el broadcast del SO cuando captura los siguientes eventos:
-        IntentFilter filter = new IntentFilter();
+       /* IntentFilter filter = new IntentFilter();
 
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED); //Cambia el estado del Bluethoot (Acrtivado /Desactivado)
         filter.addAction(BluetoothDevice.ACTION_FOUND); //Se encuentra un dispositivo bluethoot al realizar una busqueda
@@ -109,7 +141,7 @@ public class MainActivity extends Activity  {
         registerReceiver(mReceiver, filter);
 
         //obtengo el adaptador del bluethoot
-        btAdapter = BluetoothAdapter.getDefaultAdapter();
+        btAdapter = BluetoothAdapter.getDefaultAdapter();*/
 
 
     }
@@ -124,17 +156,17 @@ public class MainActivity extends Activity  {
 
     @Override
     protected void onDestroy() {
-        unregisterReceiver(mReceiver);
+        //unregisterReceiver(mReceiver);
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        if (mBluetoothAdapter != null) {
+       /* if (mBluetoothAdapter != null) {
             if (mBluetoothAdapter.isDiscovering()) {
                 mBluetoothAdapter.cancelDiscovery();
             }
-        }
+        }*/
         super.onPause();
     }
 
@@ -148,17 +180,7 @@ public class MainActivity extends Activity  {
         super.onResume();
 
     }
-
-    private void showEnabled() {
-        txtEstado.setText("Bluetooth Habilitado");
-        txtEstado.setTextColor(Color.BLUE);
-
-        btnActivar.setText("Desactivar");
-        btnActivar.setEnabled(true);
-
-        btnEmparejar.setEnabled(true);
-        btnBuscar.setEnabled(true);
-    }
+/*
 
     private void showDisabled() {
         txtEstado.setText("Bluetooth Deshabilitado");
@@ -237,10 +259,10 @@ public class MainActivity extends Activity  {
             }
         }
     };
-
+*/
 
     //Metodo que actua como Listener de los eventos que ocurren en los componentes graficos de la activty
-    private View.OnClickListener btnEmparejarListener = new View.OnClickListener() {
+    /*private View.OnClickListener btnEmparejarListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
@@ -267,31 +289,34 @@ public class MainActivity extends Activity  {
         public void onClick(View v) {
             mBluetoothAdapter.startDiscovery();
         }
-    };
+    };*/
 
 
-    private View.OnClickListener btnActivarListener = new View.OnClickListener() {
+    private View.OnClickListener btnDatosListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mBluetoothAdapter.isEnabled()) {
+            /*if (mBluetoothAdapter.isEnabled()) {
                 mBluetoothAdapter.disable();
 
                 showDisabled();
-            } else {
-                Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            } else {*/
+                Intent intent = new Intent(MainActivity.this, DatosActivity.class);
 
-                startActivityForResult(intent, 1000);
-            }
+                startActivity(intent);
+            //}
         }
     };
 
 
-    private DialogInterface.OnClickListener btnCancelarDialogListener = new DialogInterface.OnClickListener() {
+    private View.OnClickListener btnConfigListener = new View.OnClickListener() {
         @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
+        public void onClick(View b) {
+            /*dialog.dismiss();
 
-            mBluetoothAdapter.cancelDiscovery();
+            mBluetoothAdapter.cancelDiscovery();*/
+            Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
+
+            startActivity(intent);
         }
     };
 }

@@ -5,7 +5,7 @@
     android:versionName="1.0.0">
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="16"
         android:targetSdkVersion="21" />
 
     <!-- - Aca se indican los permisos que va a necesitar la aplicacion -->
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <!-- - Defino la activity que se comunica, transfierendo datos de los sensores, con Arduino -->
-        <activity android:name=".ComunicacionActivity"></activity>
+        <activity android:name=".DatosActivity"></activity>
 
     </application>
 

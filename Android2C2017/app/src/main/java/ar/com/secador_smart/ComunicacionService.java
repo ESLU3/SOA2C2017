@@ -5,7 +5,9 @@ import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -28,8 +30,7 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class ComunicacionService extends Service implements SensorEventListener
-{
+public class ComunicacionService extends Service implements SensorEventListener, ServiceConnection {
     public Handler handler;
     private SensorManager mSensorManager;
     private final int ACC = 20; //variable para umbral del Shake
@@ -179,7 +180,17 @@ public class ComunicacionService extends Service implements SensorEventListener
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
 
-        //******************************************** Hilo secundario del Activity**************************************
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
+
+    //******************************************** Hilo secundario del Activity**************************************
         //*************************************** recibe los datos enviados por el HC05**********************************
 
         private class ConnectedThread extends Thread

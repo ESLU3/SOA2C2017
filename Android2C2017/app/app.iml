@@ -95,6 +95,8 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
+    <orderEntry type="library" exported="" name="com.android.support.constraint:constraint-layout-1.0.2" level="project" />
     <orderEntry type="library" exported="" name="android-android-21" level="project" />
     <orderEntry type="library" exported="" name="maps-android-21" level="project" />
     <orderEntry type="library" exported="" name="usb-android-21" level="project" />

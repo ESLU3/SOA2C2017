@@ -17,6 +17,7 @@ ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\mai
 		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:2:11-69
 uses-sdk
 ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Esteban\.android\build-cache\96279739e955579775cd0cf7d1e3ccebec65ffc6\output\AndroidManifest.xml:5:5-7:41
 	android:targetSdkVersion
 		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:9:9-38
 		INJECTED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml
@@ -51,6 +52,7 @@ ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\mai
 		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:17:22-77
 application
 ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:19:5-44:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Esteban\.android\build-cache\96279739e955579775cd0cf7d1e3ccebec65ffc6\output\AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:22:9-41
 	android:allowBackup
@@ -87,7 +89,7 @@ action#android.intent.action.VIEW
 ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:38:17-69
 	android:name
 		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:38:25-66
-activity#ar.com.secador_smart.ComunicacionActivity
-ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:42:9-67
+activity#ar.com.secador_smart.DatosActivity
+ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:42:9-60
 	android:name
-		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:42:19-55
+		ADDED from C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\src\main\AndroidManifest.xml:42:19-48

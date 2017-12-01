@@ -1,9 +1,13 @@
 package ar.com.secador_smart;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -12,9 +16,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,18 +29,22 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class ComunicacionActivity extends Activity implements SensorEventListener
+public class ConfigActivity extends Activity
 {
-    private SensorManager mSensorManager;
-    private static final int ACC = 20; //variable para umbral del Shake
-    private TextView txtComunicacionPaired;
-    private TextView txtComunicacionDevice;
-    private TextView txtSensorDetected;
 
-    private static float tempArduino;
-    private static float humArduino;
-    private static float luzArduino;
+    private TextView txtTempArduino;
+    private TextView txtHumArduino;
+    private TextView txtLuzArduino;
+    private TextView txtFanArduino;
+    private TextView txtHeaterArduino;
+    private TextView txtTiempoEstimado;
 
+    private static String tempArduino;
+    private static String humArduino;
+    private static String luzArduino;
+    private static String heaterArduino;
+    private static String finArduino;
+    private static String fanArduino;
 
     Handler bluetoothIn;
     final int handlerState = 0; //used to identify handler message
@@ -57,70 +62,6 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
     // variable donde se guardará la direccion MAC del HC06 del Arduino
     private static String address = null;
 
-    //Metodo para registrar los sensosres en el Manager
-    protected void Ini_Sensores() {
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    // Metodo para parar la escucha de los sensores
-    private void Parar_Sensores() {
-
-        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
-        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
-        mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
-    }
-
-    // Metodo que escucha el cambio de sensibilidad de los sensores
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-
-    // Metodo que escucha el cambio de los sensores
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-
-        synchronized (this) { //esto implica que solo escuchará de a un sensor a la vez
-
-            switch (event.sensor.getType()) {
-                case Sensor.TYPE_ACCELEROMETER:
-                    if ((Math.abs(event.values[0]) > ACC || Math.abs(event.values[1]) > ACC || Math.abs(event.values[2]) > ACC)){
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("1");
-                            Log.d("sensor", "shake detected");
-                            txtSensorDetected.setText("Shake detectado");
-                        }
-                    }
-
-                    break;
-
-
-                case Sensor.TYPE_PROXIMITY:
-                    if (event.values[0] < 20) {
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("2");
-                            txtSensorDetected.setText("Proximidad Detectada");
-                            Log.d("sensor", "Proximidad Detectada");
-                        }
-
-                    }
-                    break;
-
-                case Sensor.TYPE_LIGHT:
-                    if (event.values[0] < 5){
-                        if (mConnectedThread != null) {
-                            mConnectedThread.write("3");
-                            txtSensorDetected.setText("Poca luz detectada");
-                            Log.d("sensor", "Poca luz detectada");
-                        }
-                    }
-
-                    break;
-            }
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -128,13 +69,16 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunicacion);
 
-        // Accedemos al servicio de sensores
-        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
         //Se definen los componentes del layout
-        txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
-        txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
-        txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
+        txtTempArduino= (TextView) findViewById(R.id.txtTempArduino);
+        txtHumArduino= (TextView) findViewById(R.id.txtHumArduino);
+        txtLuzArduino= (TextView) findViewById(R.id.txtLuzArduino);
+        txtFanArduino= (TextView) findViewById(R.id.txtFanArduino);
+        txtHeaterArduino= (TextView) findViewById(R.id.txtHeaterArduino);
+        txtTiempoEstimado= (TextView) findViewById(R.id.txtTiempoEstimado);
+       // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
+       // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
+          //txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
 
         //obtengo el adaptador del bluethoot
         btAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -146,7 +90,7 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
 
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
-        txtComunicacionDevice.setText(device.getName());
+        //txtComunicacionDevice.setText(device.getName());
 
     }
 
@@ -273,7 +217,7 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
             byte[] buffer = new byte[256];
             int bytes;
 
-            //el hilo secundario se queda esperando mensajes del HC05
+            //el hilo secundario se queda esperando mensajes del HC06
             while (true)
             {
                 try
@@ -281,33 +225,39 @@ public class ComunicacionActivity extends Activity implements SensorEventListene
                     //se leen los datos del Bluethoot
                     bytes = mmInStream.read(buffer);
                     String readMessage = new String(buffer, 0, bytes);
-                    if (!readMessage.contentEquals("fin")) { //si el mensaje no fue de fin de proceso
+                    if(!readMessage.isEmpty()) {
                         String[] datosArduino = readMessage.split("\\||"); //obtengo string enviado desde HC06 y hago split segun regex
-                        tempArduino = Float.parseFloat(datosArduino[0]); //obtengo temperatura desde arduino
-                        humArduino = Float.parseFloat(datosArduino[1]); //obtengo humedad desde arduino
-                        luzArduino = Float.parseFloat(datosArduino[2]); //obtengo luz desde arduino
+                        tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
+                        humArduino = datosArduino[1]; //obtengo humedad desde arduino
+                        luzArduino = datosArduino[2]; //obtengo luz desde arduino
+                        heaterArduino = datosArduino[3]; //obtengo estado calentador
+                        finArduino = datosArduino[4]; //obtengo estado calentador
+                        fanArduino = datosArduino[5]; //obtengo estado fan
                         txtTempArduino.setText(tempArduino);
                         txtHumArduino.setText(humArduino);
                         txtLuzArduino.setText(luzArduino);
+                        txtFanArduino.setText(fanArduino);
+                        txtHeaterArduino.setText(heaterArduino);
 
-                        if (humArduino > 30){
-                            if(tempArduino < 20){
+                        if (Float.parseFloat(humArduino) > 30) {
+                            if (Float.parseFloat(tempArduino) < 20) {
                                 txtTiempoEstimado.setText("2 horas");
                             } else {
                                 txtTiempoEstimado.setText("1 hora");
                             }
-                        } else if (humArduino > 20){
-                            if(tempArduino < 20){
+                        } else if (Float.parseFloat(humArduino) > 20) {
+                            if (Float.parseFloat(tempArduino) < 20) {
                                 txtTiempoEstimado.setText("1 hora");
                             } else {
                                 txtTiempoEstimado.setText("Media Hora");
                             }
-                        } else{
+                        } else {
                             txtTiempoEstimado.setText("Secado terminado en breve");
                         }
-
-                    } else {
-                        //levanto notificacion proceso terminado
+                        if (finArduino.equals("1")) { //si es fin del proceso
+                            nManager.notify(12345, notificacionFin);
+                            txtTiempoEstimado.setText("Secado finalizado!!");
+                        }
                     }
 
                      //se muestran en el layout de la activity, utilizando el handler del hilo
