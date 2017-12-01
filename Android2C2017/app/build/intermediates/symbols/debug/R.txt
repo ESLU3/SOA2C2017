@@ -54,10 +54,9 @@ int drawable unnamed 0x7f020006
 int id activity_principal 0x7f070009
 int id all 0x7f070005
 int id basic 0x7f070006
-int id btnActivar 0x7f07001d
-int id btnBuscar 0x7f07001f
-int id btnEmparejar 0x7f07001e
-int id btn_pair 0x7f070022
+int id btnConfig 0x7f07001d
+int id btnDatos 0x7f07001c
+int id btn_pair 0x7f070020
 int id chains 0x7f070007
 int id imageView 0x7f070016
 int id imageView2 0x7f070017
@@ -65,7 +64,7 @@ int id imageView3 0x7f070018
 int id imageView4 0x7f070019
 int id imageView5 0x7f07001a
 int id imageView6 0x7f07001b
-int id lv_paired 0x7f070021
+int id lv_paired 0x7f07001f
 int id none 0x7f070008
 int id packed 0x7f070003
 int id parent 0x7f070000
@@ -77,10 +76,9 @@ int id textView5 0x7f07000b
 int id textView6 0x7f07000c
 int id textView7 0x7f07000e
 int id textView8 0x7f07000f
-int id tv_address 0x7f070024
-int id tv_name 0x7f070023
-int id tv_status 0x7f070020
-int id txtEstado 0x7f07001c
+int id tv_address 0x7f070022
+int id tv_name 0x7f070021
+int id tv_status 0x7f07001e
 int id txtFanArduino 0x7f070013
 int id txtHeaterArduino 0x7f070010
 int id txtHumArduino 0x7f070012

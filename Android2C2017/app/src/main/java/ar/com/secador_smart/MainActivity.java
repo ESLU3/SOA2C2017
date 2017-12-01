@@ -43,7 +43,7 @@ public class MainActivity extends Activity  {
     private BluetoothAdapter mBluetoothAdapter;*/
     private Button btnDatos;
     private Button btnConfig;
-    //TextView txtPotenciometro;
+    private TextView txtComunicacionDevice;
 
     boolean mBounded;
     ComunicacionService mService;
@@ -62,17 +62,17 @@ public class MainActivity extends Activity  {
     ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            Toast.makeText(Client.this, "Service is disconnected", 1000).show();
+            Toast.makeText(MainActivity.this, "Service is disconnected", Toast.LENGTH_LONG).show();
             mBounded = false;
-            mServer = null;
+            mService = null;
         }
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Toast.makeText(Client.this, "Service is connected", 1000).show();
+            Toast.makeText(MainActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
             mBounded = true;
-            LocalBinder mLocalBinder = (LocalBinder)service;
-            mServer = mLocalBinder.getServerInstance();
+            ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
+            mService = mLocalBinder.getServerInstance();
         }
     };
     protected void onStart() {
@@ -88,11 +88,17 @@ public class MainActivity extends Activity  {
         setContentView(R.layout.activity_main);
 
         // Defino los botones
-        txtEstado = (TextView) findViewById(R.id.txtEstado);
+        //txtEstado = (TextView) findViewById(R.id.txtEstado);
         /*btnActivar = (Button) findViewById(R.id.btnActivar);
         btnEmparejar = (Button) findViewById(R.id.btnEmparejar);
         btnBuscar = (Button) findViewById(R.id.btnBuscar);*/
         btnDatos = (Button) findViewById(R.id.btnDatos);
+        btnConfig = (Button) findViewById(R.id.btnConfig);
+
+        // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
+        //
+        //
+        txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
 
         //Se crea un adaptador para podermanejar el bluethoot del celular
         /*mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -142,7 +148,7 @@ public class MainActivity extends Activity  {
 
         //obtengo el adaptador del bluethoot
         btAdapter = BluetoothAdapter.getDefaultAdapter();*/
-
+        txtComunicacionDevice.setText(mService.getDevice().getName());
 
     }
 
@@ -207,58 +213,7 @@ public class MainActivity extends Activity  {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    //Handler que captura los brodacast que emite el SO al ocurrir los eventos del bluethoot
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
 
-            //Atraves del Intent obtengo el evento de Bluethoot que informo el broadcast del SO
-            String action = intent.getAction();
-
-            //Si cambio de estado el Bluethoot(Activado/desactivado)
-            if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
-                //Obtengo el parametro, aplicando un Bundle, que me indica el estado del Bluethoot
-                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-
-                //Si esta activado
-                if (state == BluetoothAdapter.STATE_ON) {
-                    showToast("Activar");
-                    Log.d("blut", "active blut");
-
-                    showEnabled();
-                }
-            }
-            //Si se inicio la busqueda de dispositivos bluethoot
-            else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
-                //Creo la lista donde voy a mostrar los dispositivos encontrados
-                mDeviceList = new ArrayList<BluetoothDevice>();
-                Log.d("blut", "empiezo busqueda");
-                //muestro el cuadro de dialogo de busqueda
-                mProgressDlg.show();
-            }
-            //Si finalizo la busqueda de dispositivos bluethoot
-            else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                //se cierra el cuadro de dialogo de busqueda
-                mProgressDlg.dismiss();
-
-                //se inicia el activity DeviceListActivity pasandole como parametros, por intent,
-                //el listado de dispositivos encontrados
-                Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class);
-
-                newIntent.putParcelableArrayListExtra("device.list", mDeviceList);
-                Log.d("blut", "termine busqueda");
-
-                startActivity(newIntent);
-            }
-            //si se encontro un dispositivo bluethoot
-            else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                //Se lo agregan sus datos a una lista de dispositivos encontrados
-                BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                Log.d("blut", "encontré un dispositivo" + device.getName());
-                mDeviceList.add(device);
-                showToast("Dispositivo Encontrado:" + device.getName());
-            }
-        }
-    };
 */
 
     //Metodo que actua como Listener de los eventos que ocurren en los componentes graficos de la activty

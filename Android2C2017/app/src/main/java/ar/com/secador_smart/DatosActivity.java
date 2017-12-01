@@ -7,14 +7,17 @@ import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,7 +41,7 @@ public class DatosActivity extends Activity implements SensorEventListener
     private static final int ACC = 15; //variable para umbral del Shake
     //variables txt para el layout de los datos obtenidos de arduino
     //private TextView txtComunicacionPaired;
-    //private TextView txtComunicacionDevice;
+    private TextView txtComunicacionDevice;
     private TextView txtTempArduino;
     private TextView txtHumArduino;
     private TextView txtLuzArduino;
@@ -54,6 +57,9 @@ public class DatosActivity extends Activity implements SensorEventListener
     private static String fanArduino;
     //manager para mostrar notificaciones
     NotificationManager nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+    boolean mBounded;
+    ComunicacionService mService;
 
     Intent intent = new Intent(this, DatosActivity.class);
     // use System.currentTimeMillis() to have a unique ID for the pending intent
@@ -164,67 +170,61 @@ public class DatosActivity extends Activity implements SensorEventListener
         txtHeaterArduino= (TextView) findViewById(R.id.txtHeaterArduino);
         txtTiempoEstimado= (TextView) findViewById(R.id.txtTiempoEstimado);
        // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
-       // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
-          //txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
+        txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
+        //txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
 
         //obtengo el adaptador del bluethoot
-        btAdapter = BluetoothAdapter.getDefaultAdapter();
+        /*btAdapter = BluetoothAdapter.getDefaultAdapter();
 
         Intent intent=getIntent();
         Bundle extras=intent.getExtras();
 
         address= extras.getString("Dispositivo conectado");
 
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);
+        BluetoothDevice device = btAdapter.getRemoteDevice(address);*/
 
-        //txtComunicacionDevice.setText(device.getName());
+        txtComunicacionDevice.setText(mService.getDevice().getName());
+
 
     }
+    ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Toast.makeText(DatosActivity.this, "Service is disconnected", Toast.LENGTH_LONG).show();
+            mBounded = false;
+            mService = null;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Toast.makeText(DatosActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
+            mBounded = true;
+            ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
+            mService = mLocalBinder.getServerInstance();
+        }
+    };
+    protected void onStart() {
+        super.onStart();
+
+        Intent mIntent = new Intent(this, ComunicacionService.class);
+        bindService(mIntent, mService, BIND_AUTO_CREATE);
+    };
+
+
+
+
 
     @Override
-    //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC05, creando un
+    //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC06, creando un
     //socketBluethoot
     public void onResume() {
         super.onResume();
 
         Ini_Sensores();
-        //Obtengo el parametro, aplicando un Bundle, que me indica la Mac Adress del HC05
-        Intent intent=getIntent();
-        Bundle extras=intent.getExtras();
-
-        address= extras.getString("Dispositivo conectado");
-
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);
-
-        //se realiza la conexion del Bluethoot crea y se conectandose a atraves de un socket
-        try
-        {
-            btSocket = createBluetoothSocket(device);
-        }
-        catch (IOException e)
-        {
-            showToast( "La creacción del Socket fallo");
-        }
-        // Establish the Bluetooth socket connection.
-        try
-        {
-            btSocket.connect();
-        }
-        catch (IOException e)
-        {
-            try
-            {
-                btSocket.close();
-            }
-            catch (IOException e2)
-            {
-                //insert code to deal with this
-            }
-        }
 
         //Una establecida la conexion con el Hc05 se crea el hilo secundario, el cual va a recibir
         // los datos de Arduino atraves del bluethoot
-        mConnectedThread = new ConnectedThread(btSocket);
+        mConnectedThread = new ConnectedThread(mService.getBtSocket());
         mConnectedThread.start();
 
         //I send a character when resuming.beginning transmission to check device is connected
@@ -309,6 +309,7 @@ public class DatosActivity extends Activity implements SensorEventListener
             {
                 try
                 {
+                    Thread.sleep(5000);
                     //se leen los datos del Bluethoot
                     bytes = mmInStream.read(buffer);
                     String readMessage = new String(buffer, 0, bytes);
@@ -352,6 +353,8 @@ public class DatosActivity extends Activity implements SensorEventListener
                    // bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
                     break;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

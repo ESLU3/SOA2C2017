@@ -12,36 +12,19 @@
         android:textAlignment="center"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/txtEstado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/text_bluetooth_off"
-        android:textColor="#ff0000"
-        android:textSize="17sp" />
-
     <Button
-        android:id="@+id/btnActivar"
+        android:id="@+id/btnDatos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/text_enable" />
+        android:text="Ver Datos" />
 
     <Button
-        android:id="@+id/btnEmparejar"
+        android:id="@+id/btnConfig"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:enabled="false"
-        android:text="@string/text_view_paired" />
-
-    <Button
-        android:id="@+id/btnBuscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:enabled="false"
-        android:text="@string/text_scan_devices" />
+        android:text="Configurar" />
 
 </LinearLayout>

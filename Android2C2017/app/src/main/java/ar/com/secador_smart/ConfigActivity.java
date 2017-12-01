@@ -7,15 +7,23 @@ import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,12 +40,12 @@ import java.util.UUID;
 public class ConfigActivity extends Activity
 {
 
-    private TextView txtTempArduino;
-    private TextView txtHumArduino;
-    private TextView txtLuzArduino;
-    private TextView txtFanArduino;
-    private TextView txtHeaterArduino;
-    private TextView txtTiempoEstimado;
+    private EditText txtUmbralTemp;
+    private EditText txtUmbralHum;
+    private Switch switchFan;
+    private Switch switchHeater;
+
+    private TextView txtComunicacionDevice;
 
     private static String tempArduino;
     private static String humArduino;
@@ -45,6 +53,9 @@ public class ConfigActivity extends Activity
     private static String heaterArduino;
     private static String finArduino;
     private static String fanArduino;
+
+    boolean mBounded;
+    ComunicacionService mService;
 
     Handler bluetoothIn;
     final int handlerState = 0; //used to identify handler message
@@ -63,97 +74,112 @@ public class ConfigActivity extends Activity
     private static String address = null;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comunicacion);
+        setContentView(R.layout.activity_config);
 
         //Se definen los componentes del layout
-        txtTempArduino= (TextView) findViewById(R.id.txtTempArduino);
-        txtHumArduino= (TextView) findViewById(R.id.txtHumArduino);
-        txtLuzArduino= (TextView) findViewById(R.id.txtLuzArduino);
-        txtFanArduino= (TextView) findViewById(R.id.txtFanArduino);
-        txtHeaterArduino= (TextView) findViewById(R.id.txtHeaterArduino);
-        txtTiempoEstimado= (TextView) findViewById(R.id.txtTiempoEstimado);
-       // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
-       // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
-          //txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
+        txtUmbralTemp= (EditText) findViewById(R.id.txtUmbralTemp);
+        txtUmbralHum= (EditText) findViewById(R.id.txtUmbralHum);
+        txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
+        switchHeater = (Switch) findViewById(R.id.switchHeater);
+        switchFan = (Switch) findViewById(R.id.switchFan);
 
         //obtengo el adaptador del bluethoot
-        btAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        Intent intent=getIntent();
-        Bundle extras=intent.getExtras();
+        txtComunicacionDevice.setText(mService.getDevice().getName());
 
-        address= extras.getString("Dispositivo conectado");
+        txtUmbralHum.setOnClickListener(btnUmbralHum);
+        txtUmbralTemp.setOnClickListener(btnUmbralTemp);
 
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);
+        switchHeater.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    // If the switch button is on
+                    switchHeater.setBackgroundColor(Color.GREEN);
+                    if(mConnectedThread!=null){
+                        mConnectedThread.write("h1");
+                        Log.d("arduino", "envie switch heater on");
+                    }
+                }
+                else {
+                    // If the switch button is off
+                    switchHeater.setBackgroundColor(Color.RED);
+                    if(mConnectedThread!=null){
+                        mConnectedThread.write("h0");
+                        Log.d("arduino", "envie switch heater off");
+                    }
+                }
+            }
+        });
+        switchFan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    // If the switch button is on
+                    switchFan.setBackgroundColor(Color.GREEN);
+                    if(mConnectedThread!=null){
+                        mConnectedThread.write("f1");
+                        Log.d("arduino", "envie switch fan on");
+                    }
+                }
+                else {
+                    // If the switch button is off
+                    switchFan.setBackgroundColor(Color.RED);
+                    if(mConnectedThread!=null){
+                        mConnectedThread.write("f0");
+                        Log.d("arduino", "envie switch fan off");
+                    }
+                }
+            }
+        });
 
-        //txtComunicacionDevice.setText(device.getName());
+
 
     }
+    ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Toast.makeText(ConfigActivity.this, "Service is disconnected", Toast.LENGTH_LONG).show();
+            mBounded = false;
+            mService = null;
+        }
 
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Toast.makeText(ConfigActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
+            mBounded = true;
+            ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
+            mService = mLocalBinder.getServerInstance();
+        }
+    };
+    protected void onStart() {
+        super.onStart();
+
+        Intent mIntent = new Intent(this, ComunicacionService.class);
+        bindService(mIntent, mService, BIND_AUTO_CREATE);
+    };
     @Override
     //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC05, creando un
     //socketBluethoot
     public void onResume() {
         super.onResume();
-
-        Ini_Sensores();
-        //Obtengo el parametro, aplicando un Bundle, que me indica la Mac Adress del HC05
-        Intent intent=getIntent();
-        Bundle extras=intent.getExtras();
-
-        address= extras.getString("Dispositivo conectado");
-
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);
-
-        //se realiza la conexion del Bluethoot crea y se conectandose a atraves de un socket
-        try
-        {
-            btSocket = createBluetoothSocket(device);
-        }
-        catch (IOException e)
-        {
-            showToast( "La creacción del Socket fallo");
-        }
-        // Establish the Bluetooth socket connection.
-        try
-        {
-            btSocket.connect();
-        }
-        catch (IOException e)
-        {
-            try
-            {
-                btSocket.close();
-            }
-            catch (IOException e2)
-            {
-                //insert code to deal with this
-            }
-        }
-
-        //Una establecida la conexion con el Hc05 se crea el hilo secundario, el cual va a recibir
-        // los datos de Arduino atraves del bluethoot
-        mConnectedThread = new ConnectedThread(btSocket);
+        mConnectedThread = new ConfigActivity.ConnectedThread(mService.getBtSocket());
         mConnectedThread.start();
-
-        //I send a character when resuming.beginning transmission to check device is connected
-        //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
     }
 
     @Override
     protected void onStop() {
 
-        Parar_Sensores();
         super.onStop();
     }
     @Override
     protected void onDestroy() {
-        Parar_Sensores();
         super.onDestroy();
     }
     @Override
@@ -161,7 +187,6 @@ public class ConfigActivity extends Activity
     public void onPause()
     {
         super.onPause();
-        Parar_Sensores();
         try
         {
             //Don't leave Bluetooth sockets open when leaving activity
@@ -172,7 +197,6 @@ public class ConfigActivity extends Activity
     }
     @Override
     protected void onRestart() {
-        Ini_Sensores();
 
         super.onRestart();
     }
@@ -186,6 +210,29 @@ public class ConfigActivity extends Activity
     private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+    private EditText.OnClickListener btnUmbralTemp = new EditText.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            if(mConnectedThread!=null){
+                String valor = txtUmbralTemp.getText().toString();
+                mConnectedThread.write("t" + valor);
+                Log.d("arduino", "envie umbral temp");
+            }
+        }
+    };
+
+    private EditText.OnClickListener btnUmbralHum = new EditText.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            if(mConnectedThread!=null){
+                String valor = txtUmbralHum.getText().toString();
+                mConnectedThread.write("h" + valor);
+                Log.d("arduino", "envie umbral hum");
+            }
+        }
+    };
+
 
     //******************************************** Hilo secundario del Activity**************************************
 
@@ -220,11 +267,11 @@ public class ConfigActivity extends Activity
             //el hilo secundario se queda esperando mensajes del HC06
             while (true)
             {
-                try
+                /*try
                 {
                     //se leen los datos del Bluethoot
-                    bytes = mmInStream.read(buffer);
-                    String readMessage = new String(buffer, 0, bytes);
+                   // bytes = mmInStream.read(buffer);
+                   // String readMessage = new String(buffer, 0, bytes);
                     if(!readMessage.isEmpty()) {
                         String[] datosArduino = readMessage.split("\\||"); //obtengo string enviado desde HC06 y hago split segun regex
                         tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
@@ -239,25 +286,6 @@ public class ConfigActivity extends Activity
                         txtFanArduino.setText(fanArduino);
                         txtHeaterArduino.setText(heaterArduino);
 
-                        if (Float.parseFloat(humArduino) > 30) {
-                            if (Float.parseFloat(tempArduino) < 20) {
-                                txtTiempoEstimado.setText("2 horas");
-                            } else {
-                                txtTiempoEstimado.setText("1 hora");
-                            }
-                        } else if (Float.parseFloat(humArduino) > 20) {
-                            if (Float.parseFloat(tempArduino) < 20) {
-                                txtTiempoEstimado.setText("1 hora");
-                            } else {
-                                txtTiempoEstimado.setText("Media Hora");
-                            }
-                        } else {
-                            txtTiempoEstimado.setText("Secado terminado en breve");
-                        }
-                        if (finArduino.equals("1")) { //si es fin del proceso
-                            nManager.notify(12345, notificacionFin);
-                            txtTiempoEstimado.setText("Secado finalizado!!");
-                        }
                     }
 
                      //se muestran en el layout de la activity, utilizando el handler del hilo
@@ -265,7 +293,7 @@ public class ConfigActivity extends Activity
                    // bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
                     break;
-                }
+                }*/
             }
         }
 

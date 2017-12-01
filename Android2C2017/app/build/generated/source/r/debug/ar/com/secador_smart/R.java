@@ -474,10 +474,9 @@ containing a value of this type.
         public static final int activity_principal=0x7f070009;
         public static final int all=0x7f070005;
         public static final int basic=0x7f070006;
-        public static final int btnActivar=0x7f07001d;
-        public static final int btnBuscar=0x7f07001f;
-        public static final int btnEmparejar=0x7f07001e;
-        public static final int btn_pair=0x7f070022;
+        public static final int btnConfig=0x7f07001d;
+        public static final int btnDatos=0x7f07001c;
+        public static final int btn_pair=0x7f070020;
         public static final int chains=0x7f070007;
         public static final int imageView=0x7f070016;
         public static final int imageView2=0x7f070017;
@@ -485,7 +484,7 @@ containing a value of this type.
         public static final int imageView4=0x7f070019;
         public static final int imageView5=0x7f07001a;
         public static final int imageView6=0x7f07001b;
-        public static final int lv_paired=0x7f070021;
+        public static final int lv_paired=0x7f07001f;
         public static final int none=0x7f070008;
         public static final int packed=0x7f070003;
         public static final int parent=0x7f070000;
@@ -497,10 +496,9 @@ containing a value of this type.
         public static final int textView6=0x7f07000c;
         public static final int textView7=0x7f07000e;
         public static final int textView8=0x7f07000f;
-        public static final int tv_address=0x7f070024;
-        public static final int tv_name=0x7f070023;
-        public static final int tv_status=0x7f070020;
-        public static final int txtEstado=0x7f07001c;
+        public static final int tv_address=0x7f070022;
+        public static final int tv_name=0x7f070021;
+        public static final int tv_status=0x7f07001e;
         public static final int txtFanArduino=0x7f070013;
         public static final int txtHeaterArduino=0x7f070010;
         public static final int txtHumArduino=0x7f070012;

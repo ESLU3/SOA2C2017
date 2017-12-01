@@ -13,14 +13,45 @@
     tools:context="ar.com.secador_smart.DatosActivity">
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="222dp"
+        android:layout_height="41dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:text="Conectado A:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <TextView
+        android:id="@+id/txtComunicacionDevice"
+        android:layout_width="1dp"
+        android:layout_height="32dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
         android:fontFamily="serif"
         android:text="Temperatura (°C)"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="108dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -29,19 +60,19 @@
         android:fontFamily="serif"
         android:text="Humedad (%)"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="62dp" />
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="166dp" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="152dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="96dp"
         android:fontFamily="serif"
         android:text="Luminosidad"
         android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@+id/txtLuzArduino"
-        tools:layout_editor_absoluteY="133dp" />
+        tools:layout_editor_absoluteY="226dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -50,19 +81,19 @@
         android:fontFamily="serif"
         android:text="Ventilador"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="254dp" />
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="349dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="108dp"
         android:fontFamily="serif"
         android:text="Calefactor"
         android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@+id/txtHeaterArduino"
-        tools:layout_editor_absoluteY="194dp" />
+        tools:layout_editor_absoluteY="287dp" />
 
     <TextView
         android:id="@+id/txtTempArduino"
@@ -70,8 +101,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="265dp"
+        tools:layout_editor_absoluteY="108dp" />
 
     <TextView
         android:id="@+id/txtHumArduino"
@@ -79,8 +110,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="66dp" />
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="158dp" />
 
     <TextView
         android:id="@+id/txtLuzArduino"
@@ -88,8 +119,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="237dp"
-        tools:layout_editor_absoluteY="123dp" />
+        tools:layout_editor_absoluteX="265dp"
+        tools:layout_editor_absoluteY="207dp" />
 
     <TextView
         android:id="@+id/txtHeaterArduino"
@@ -97,8 +128,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="240dp"
-        tools:layout_editor_absoluteY="178dp" />
+        tools:layout_editor_absoluteX="265dp"
+        tools:layout_editor_absoluteY="268dp" />
 
     <TextView
         android:id="@+id/txtFanArduino"
@@ -106,8 +137,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="241dp"
-        tools:layout_editor_absoluteY="235dp" />
+        tools:layout_editor_absoluteX="265dp"
+        tools:layout_editor_absoluteY="329dp" />
 
     <TextView
         android:id="@+id/textView14"
@@ -119,8 +150,8 @@
         android:textAllCaps="false"
         android:textSize="21sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="352dp" />
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="400dp" />
 
     <TextView
         android:id="@+id/txtTiempoEstimado"
@@ -128,54 +159,55 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="400dp" />
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="448dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/reloj"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="400dp" />
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="446dp" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/fan"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="246dp" />
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="341dp" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/fuego"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="181dp" />
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="267dp" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/luz"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="117dp" />
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="206dp" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/unnamed"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="62dp" />
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="158dp" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/temp"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="95dp" />
+
 </android.support.constraint.ConstraintLayout>
