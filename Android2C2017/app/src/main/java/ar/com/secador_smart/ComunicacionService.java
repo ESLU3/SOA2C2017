@@ -112,6 +112,18 @@ public class ComunicacionService extends Service implements ServiceConnection {
                                 }
                             }
                             Log.d("arduino", "service conectado al arduino");
+                        }else { if(!btSocket.isConnected()){
+                            // Establish the Bluetooth socket connection.
+                            try {
+                                btSocket.connect();
+                            } catch (IOException e) {
+                                try {
+                                    btSocket.close();
+                                } catch (IOException e2) {
+                                    //insert code to deal with this
+                                }
+                            }
+                        }
                         }
 
                         } catch(InterruptedException e){

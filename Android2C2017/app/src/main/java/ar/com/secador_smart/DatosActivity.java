@@ -163,44 +163,45 @@ public class DatosActivity extends Activity
 
             String datos;
 
-            datos = mService.read();
-            if(datos != null && datos.length()>3) {
-                if (!datos.contains("fin")) { //si es fin del proceso
-                    String[] datosArduino = datos.split("\\|"); //obtengo string enviado desde HC06 y hago split segun regex
-                    Log.d("arduino", "datos: " + datos);
-                    tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
-                    humArduino = datosArduino[1]; //obtengo humedad desde arduino
-                    luzArduino = datosArduino[2]; //obtengo luz desde arduino
-                    heaterArduino = datosArduino[3]; //obtengo estado calentador
-                    finArduino = datosArduino[4]; //obtengo estado calentador
-                    fanArduino = datosArduino[5]; //obtengo estado fan
-                    txtTempArduino.setText(tempArduino);
-                    txtHumArduino.setText(humArduino);
-                    txtLuzArduino.setText(luzArduino);
-                    txtFanArduino.setText(fanArduino);
-                    txtHeaterArduino.setText(heaterArduino);
+            try {
+                datos = mService.read();
+                if(datos != null && datos.length()>3) {
+                    if (!datos.contains("fin")) { //si es fin del proceso
+                        String[] datosArduino = datos.split("\\|"); //obtengo string enviado desde HC06 y hago split segun regex
+                        Log.d("arduino", "datos: " + datos);
+                        tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
+                        humArduino = datosArduino[1]; //obtengo humedad desde arduino
+                        luzArduino = datosArduino[2]; //obtengo luz desde arduino
+                        heaterArduino = datosArduino[3]; //obtengo estado calentador
+                        finArduino = datosArduino[4]; //obtengo estado calentador
+                        fanArduino = datosArduino[5]; //obtengo estado fan
+                        txtTempArduino.setText(tempArduino);
+                        txtHumArduino.setText(humArduino);
+                        txtLuzArduino.setText(luzArduino);
+                        txtFanArduino.setText(fanArduino);
+                        txtHeaterArduino.setText(heaterArduino);
 
-                    if (Float.parseFloat(humArduino) > 30) {
-                        if (Float.parseFloat(tempArduino) < 20) {
-                            txtTiempoEstimado.setText("2 horas");
+                        if (Float.parseFloat(humArduino) > 30) {
+                            if (Float.parseFloat(tempArduino) < 20) {
+                                txtTiempoEstimado.setText("2 horas");
+                            } else {
+                                txtTiempoEstimado.setText("1 hora");
+                            }
+                        } else if (Float.parseFloat(humArduino) > 20) {
+                            if (Float.parseFloat(tempArduino) < 20) {
+                                txtTiempoEstimado.setText("1 hora");
+                            } else {
+                                txtTiempoEstimado.setText("Media Hora");
+                            }
                         } else {
-                            txtTiempoEstimado.setText("1 hora");
+                            txtTiempoEstimado.setText("Secado terminado en breve");
                         }
-                    } else if (Float.parseFloat(humArduino) > 20) {
-                        if (Float.parseFloat(tempArduino) < 20) {
-                            txtTiempoEstimado.setText("1 hora");
-                        } else {
-                            txtTiempoEstimado.setText("Media Hora");
-                        }
-                    } else {
-                        txtTiempoEstimado.setText("Secado terminado en breve");
-                    }
 
                 }else {
                     nManager.notify(12345, notificacionFin);
                     txtTiempoEstimado.setText("Secado finalizado!!");
                 }
-            }
+            }} catch (Exception e){ showToast("Error de conexión");}
 
 
 
