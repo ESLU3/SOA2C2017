@@ -187,8 +187,6 @@ public class ConfigActivity extends Activity {
 
 
     @Override
-    //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC05, creando un
-    //socketBluethoot
     public void onResume() {
         super.onResume();
     }
@@ -205,7 +203,6 @@ public class ConfigActivity extends Activity {
     }
 
     @Override
-    //Cuando se ejecuta el evento onPause se cierra el socket Bluethoot, para no recibiendo datos
     public void onPause() {
         super.onPause();
     }

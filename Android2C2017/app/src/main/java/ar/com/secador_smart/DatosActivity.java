@@ -124,8 +124,6 @@ public class DatosActivity extends Activity
 
 
     @Override
-    //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC06, creando un
-    //socketBluethoot
     public void onResume() {
         super.onResume();
 

@@ -61,16 +61,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
 
     }
 
-    @Override
-    //Despues de onCreate automaticamente se ejecuta a OnstartCommand,
-    //idArranque: Es el id del servicio a ejecutar
-    public int onStartCommand(Intent intenc, int flags, int idArranque)
-    {
-        Toast.makeText(this,"Servicio arrancado "+ idArranque,Toast.LENGTH_SHORT).show();
-
-        return flags;
-    }
-
+    
     @Override
     //On destroy se invoca cuando se ejcuta stopService
     public void onDestroy()
@@ -200,23 +191,5 @@ public class ComunicacionService extends Service implements ServiceConnection {
     public void onServiceDisconnected(ComponentName name) {
 
     }
-    //metodo que llamaran los activities para enviar info
-    /*public BluetoothDevice getDevice(){
-        return btAdapter.getRemoteDevice(address);
-    }
-
-    public BluetoothSocket getBtSocket(){
-        return btSocket;
-    }
-
-    private void pairDevice(BluetoothDevice device) {
-        try {
-            Method method = device.getClass().getMethod("createBond", (Class[]) null);
-            method.invoke(device, (Object[]) null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
 
 }
