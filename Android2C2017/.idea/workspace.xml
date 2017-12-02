@@ -9,6 +9,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="arduino" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
@@ -53,21 +54,21 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2162">
-              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="android-designer2">
             <state />
           </provider>
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            <state relative-caret-position="255">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -79,10 +80,11 @@
             <state />
           </provider>
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+            <state relative-caret-position="249">
+              <caret line="100" column="31" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
               <folding>
-                <marker date="1512172500702" expanded="true" signature="7329:7335" ph="..." />
+                <element signature="e#929#947#0" expanded="true" />
+                <marker date="1512227896535" expanded="true" signature="17858:17864" ph="..." />
               </folding>
             </state>
           </provider>
@@ -91,11 +93,13 @@
       <file leaf-file-name="ComunicacionService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ComunicacionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="144" column="27" selection-start-line="144" selection-start-column="27" selection-end-line="144" selection-end-column="27" />
               <folding>
-                <element signature="e#9445#9446#0" expanded="true" />
-                <element signature="e#9508#9509#0" expanded="true" />
+                <element signature="e#2868#4743#0" expanded="true" />
+                <element signature="e#4742#4743#0" expanded="true" />
+                <element signature="e#5520#5521#0" expanded="true" />
+                <element signature="e#5549#5550#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,11 +108,17 @@
       <file leaf-file-name="ConfigActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ConfigActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="244" column="42" selection-start-line="244" selection-start-column="42" selection-end-line="244" selection-end-column="42" />
+            <state relative-caret-position="434">
+              <caret line="115" column="26" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="26" />
               <folding>
-                <element signature="e#6288#6289#0" expanded="true" />
-                <element signature="e#6320#6321#0" expanded="true" />
+                <element signature="e#4110#4946#0" expanded="true" />
+                <element signature="e#4945#4946#0" expanded="true" />
+                <element signature="e#5020#5841#0" expanded="true" />
+                <element signature="e#5840#5841#0" expanded="true" />
+                <element signature="e#7115#7116#0" expanded="true" />
+                <element signature="e#7146#7147#0" expanded="true" />
+                <element signature="e#7425#8449#0" expanded="true" />
+                <element signature="e#8448#8449#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,35 +130,26 @@
             <state />
           </provider>
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="186">
+              <caret line="294" column="31" selection-start-line="294" selection-start-column="31" selection-end-line="294" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatosActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatosActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DatosActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-212">
-              <caret line="169" column="46" selection-start-line="169" selection-start-column="46" selection-end-line="169" selection-end-column="46" />
+            <state relative-caret-position="-1622">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="61" selection-end-column="40" />
               <folding>
-                <element signature="e#12603#15389#0" expanded="true" />
-                <element signature="e#15388#15389#0" expanded="true" />
+                <element signature="e#4748#4749#0" expanded="true" />
+                <element signature="e#4778#4779#0" expanded="true" />
+                <element signature="e#4825#4826#0" expanded="true" />
+                <element signature="e#4858#4859#0" expanded="true" />
+                <element signature="e#5002#5003#0" expanded="true" />
+                <element signature="e#5033#5034#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1837,21 +1838,22 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ComunicacionActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ComunicacionService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_comunicacion.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_comunicacion.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ComunicacionService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DatosActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ConfigActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1378" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -1862,16 +1864,10 @@
             <id />
           </State>
           <State>
-            <id>Abstraction issuesJava</id>
+            <id>Android &gt; Lint &gt; Correctness</id>
           </State>
           <State>
-            <id>AccessibilityLintAndroid</id>
-          </State>
-          <State>
-            <id>Android</id>
-          </State>
-          <State>
-            <id>Annotations verifyingGroovy</id>
+            <id>Android &gt; Lint &gt; Usability &gt; Typography</id>
           </State>
           <State>
             <id>Assignment issuesGroovy</id>
@@ -1880,172 +1876,13 @@
             <id>Assignment issuesJava</id>
           </State>
           <State>
-            <id>Bidirectional TextInternationalizationLintAndroid</id>
-          </State>
-          <State>
-            <id>Bitwise operation issuesJava</id>
-          </State>
-          <State>
-            <id>C/C++</id>
-          </State>
-          <State>
-            <id>Class metricsJava</id>
-          </State>
-          <State>
-            <id>Class structureJava</id>
-          </State>
-          <State>
-            <id>Cloning issuesJava</id>
-          </State>
-          <State>
-            <id>Code maturity issuesJava</id>
-          </State>
-          <State>
-            <id>Code style issuesJava</id>
-          </State>
-          <State>
-            <id>Compiler issuesJava</id>
-          </State>
-          <State>
             <id>Control flow issuesJava</id>
-          </State>
-          <State>
-            <id>CorrectnessLintAndroid</id>
-          </State>
-          <State>
-            <id>Data flow issuesGroovy</id>
-          </State>
-          <State>
-            <id>Data flow issuesJava</id>
-          </State>
-          <State>
-            <id>Declaration redundancyJava</id>
-          </State>
-          <State>
-            <id>DeclarationGroovy</id>
-          </State>
-          <State>
-            <id>Encapsulation issuesJava</id>
-          </State>
-          <State>
-            <id>Error handlingJava</id>
-          </State>
-          <State>
-            <id>Finalization issuesJava</id>
-          </State>
-          <State>
-            <id>General</id>
-          </State>
-          <State>
-            <id>Google Cloud Endpoints</id>
           </State>
           <State>
             <id>Groovy</id>
           </State>
           <State>
-            <id>HTML</id>
-          </State>
-          <State>
-            <id>IconsUsabilityLintAndroid</id>
-          </State>
-          <State>
-            <id>ImportsJava</id>
-          </State>
-          <State>
-            <id>Inheritance issuesJava</id>
-          </State>
-          <State>
-            <id>Initialization issuesJava</id>
-          </State>
-          <State>
-            <id>Internationalization issuesJava</id>
-          </State>
-          <State>
-            <id>InternationalizationLintAndroid</id>
-          </State>
-          <State>
-            <id>J2ME issuesJava</id>
-          </State>
-          <State>
-            <id>JSON</id>
-          </State>
-          <State>
-            <id>JUnit issuesJava</id>
-          </State>
-          <State>
             <id>Java</id>
-          </State>
-          <State>
-            <id>Java 5Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 7Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 8Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>JavaBeans issuesJava</id>
-          </State>
-          <State>
-            <id>Javadoc issuesJava</id>
-          </State>
-          <State>
-            <id>Kotlin</id>
-          </State>
-          <State>
-            <id>Language Injection</id>
-          </State>
-          <State>
-            <id>LintAndroid</id>
-          </State>
-          <State>
-            <id>LintLintAndroid</id>
-          </State>
-          <State>
-            <id>Logging issuesJava</id>
-          </State>
-          <State>
-            <id>Manifest</id>
-          </State>
-          <State>
-            <id>Memory issuesJava</id>
-          </State>
-          <State>
-            <id>MessagesCorrectnessLintAndroid</id>
-          </State>
-          <State>
-            <id>Method metricsJava</id>
-          </State>
-          <State>
-            <id>Naming ConventionsGroovy</id>
-          </State>
-          <State>
-            <id>Naming conventionsJava</id>
-          </State>
-          <State>
-            <id>Numeric issuesJava</id>
-          </State>
-          <State>
-            <id>OtherGroovy</id>
-          </State>
-          <State>
-            <id>Packaging issuesJava</id>
-          </State>
-          <State>
-            <id>Pattern Validation</id>
-          </State>
-          <State>
-            <id>Performance issuesJava</id>
-          </State>
-          <State>
-            <id>PerformanceLintAndroid</id>
-          </State>
-          <State>
-            <id>Portability issuesJava</id>
           </State>
           <State>
             <id>Potentially confusing code constructsGroovy</id>
@@ -2057,58 +1894,13 @@
             <id>Probable bugsJava</id>
           </State>
           <State>
-            <id>Properties Files</id>
-          </State>
-          <State>
-            <id>RELAX NG</id>
-          </State>
-          <State>
-            <id>Redundant constructsKotlin</id>
-          </State>
-          <State>
-            <id>Resource management issuesJava</id>
-          </State>
-          <State>
-            <id>Security issuesJava</id>
-          </State>
-          <State>
-            <id>SecurityLintAndroid</id>
-          </State>
-          <State>
-            <id>Serialization issuesJava</id>
-          </State>
-          <State>
             <id>Spelling</id>
-          </State>
-          <State>
-            <id>Style issuesKotlin</id>
-          </State>
-          <State>
-            <id>TestNGJava</id>
           </State>
           <State>
             <id>Threading issuesGroovy</id>
           </State>
           <State>
             <id>Threading issuesJava</id>
-          </State>
-          <State>
-            <id>Type checksC/C++</id>
-          </State>
-          <State>
-            <id>TypographyUsabilityLintAndroid</id>
-          </State>
-          <State>
-            <id>UsabilityLintAndroid</id>
-          </State>
-          <State>
-            <id>Visibility issuesJava</id>
-          </State>
-          <State>
-            <id>XML</id>
-          </State>
-          <State>
-            <id>toString() issuesJava</id>
           </State>
         </expanded-state>
         <selected-state>
@@ -2144,9 +1936,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2197,16 +1990,12 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="secador_smart" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MainActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2225,50 +2014,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="secador_smart" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android2C2017" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="secador_smart" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatosActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android2C2017" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="secador_smart" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConfigActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2283,7 +2028,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2296,6 +2040,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Facultad/SOA/android/ejemplos/Android/Ejecucion_Background/Runnable" />
     <property name="android.profiler.active" value="true" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/build/outputs/apk/app-release-unsigned.apk" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -2644,8 +2389,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21864407" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2653,20 +2398,22 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4454343" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6338983" sideWeight="0.4939302" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37118644" sideWeight="0.4939302" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272921" sideWeight="0.49335548" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5694915" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711864" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6338983" sideWeight="0.5060698" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13581184" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Component Tree" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="596" y="191" width="174" height="346" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21860817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.320339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3983051" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5169492" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2679,7 +2426,6 @@
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272921" sideWeight="0.50664455" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272921" sideWeight="0.49335548" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2732,13 +2478,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DatosActivity.java</url>
-          <line>377</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ConfigActivity.java</url>
+          <line>231</line>
           <properties />
-          <option name="timeStamp" value="32" />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DatosActivity.java</url>
+          <line>166</line>
+          <properties />
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="33" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2818,16 +2570,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-v14/activity_comunicacion.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_paired_devices.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_device.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -2846,14 +2588,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/fuego.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -2866,22 +2600,10 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/view/View.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Android/android-sdk/platforms/android-21/android.jar!/android/content/ContextWrapper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="419" column="0" selection-start-line="419" selection-start-column="0" selection-end-line="419" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2889,10 +2611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding>
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2900,10 +2618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
           <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding>
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2911,10 +2625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="300" column="11" selection-start-line="300" selection-start-column="11" selection-end-line="300" selection-end-column="11" />
-          <folding>
-            <element signature="e#22437#22438#0" expanded="true" />
-            <element signature="e#22488#22489#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2922,7 +2632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="938" column="0" selection-start-line="938" selection-start-column="0" selection-end-line="938" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2931,30 +2640,6 @@
         <state relative-caret-position="1729">
           <caret line="137" column="22" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ComunicacionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-          <folding>
-            <element signature="e#9445#9446#0" expanded="true" />
-            <element signature="e#9508#9509#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comunicacion.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding>
-            <marker date="1512172500702" expanded="true" signature="7329:7335" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2969,44 +2654,111 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comunicacion.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="100" column="31" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
+          <folding>
+            <element signature="e#929#947#0" expanded="true" />
+            <marker date="1512227896535" expanded="true" signature="17858:17864" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="186">
+          <caret line="294" column="31" selection-start-line="294" selection-start-column="31" selection-end-line="294" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ComunicacionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2162">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ConfigActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="244" column="42" selection-start-line="244" selection-start-column="42" selection-end-line="244" selection-end-column="42" />
+        <state relative-caret-position="289">
+          <caret line="144" column="27" selection-start-line="144" selection-start-column="27" selection-end-line="144" selection-end-column="27" />
           <folding>
-            <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6320#6321#0" expanded="true" />
+            <element signature="e#2868#4743#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+            <element signature="e#5520#5521#0" expanded="true" />
+            <element signature="e#5549#5550#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DatosActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-212">
-          <caret line="169" column="46" selection-start-line="169" selection-start-column="46" selection-end-line="169" selection-end-column="46" />
+        <state relative-caret-position="-1622">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="61" selection-end-column="40" />
           <folding>
-            <element signature="e#12603#15389#0" expanded="true" />
-            <element signature="e#15388#15389#0" expanded="true" />
+            <element signature="e#4748#4749#0" expanded="true" />
+            <element signature="e#4778#4779#0" expanded="true" />
+            <element signature="e#4825#4826#0" expanded="true" />
+            <element signature="e#4858#4859#0" expanded="true" />
+            <element signature="e#5002#5003#0" expanded="true" />
+            <element signature="e#5033#5034#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/ConfigActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="115" column="26" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="26" />
+          <folding>
+            <element signature="e#4110#4946#0" expanded="true" />
+            <element signature="e#4945#4946#0" expanded="true" />
+            <element signature="e#5020#5841#0" expanded="true" />
+            <element signature="e#5840#5841#0" expanded="true" />
+            <element signature="e#7115#7116#0" expanded="true" />
+            <element signature="e#7146#7147#0" expanded="true" />
+            <element signature="e#7425#8449#0" expanded="true" />
+            <element signature="e#8448#8449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/DeviceListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ar/com/secador_smart/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_paired_devices.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -20,6 +20,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,24 +36,14 @@ import java.util.UUID;
 
 //******************************************** Hilo principal del Activity**************************************
 public class ComunicacionService extends Service implements ServiceConnection {
-    public Handler handler;
-    private SensorManager mSensorManager;
-    private final int ACC = 20; //variable para umbral del Shake
-    private float last_x = 0;
-    private float last_z = 0;
-    private float last_y = 0;
-    private TextView txtComunicacionPaired;
-    private TextView txtComunicacionDevice;
-    private TextView txtSensorDetected;
-    Handler bluetoothIn;
-    final int handlerState = 0; //used to identify handler message
 
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
-    private StringBuilder recDataString = new StringBuilder();
 
-    //Variable para el hilo que manejará la comunicacion
-    //private ConnectedThread mConnectedThread;
+    private InputStream mmInStream = null;
+    private OutputStream mmOutStream = null;
+
+
 
     // SPP UUID service
     private final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -65,7 +56,6 @@ public class ComunicacionService extends Service implements ServiceConnection {
     public void onCreate()
     {
         Toast.makeText(this,"Servicio creado", Toast.LENGTH_SHORT).show();
-        //reproductor.setLooping(true);
         Log.d("arduino", "servicio iniciado");
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -78,44 +68,6 @@ public class ComunicacionService extends Service implements ServiceConnection {
     {
         Toast.makeText(this,"Servicio arrancado "+ idArranque,Toast.LENGTH_SHORT).show();
 
-       /* new Thread(new Runnable() {
-            public void run() {
-
-                while (true) {
-                    try {
-                        Thread.sleep(500);
-                        if (btSocket == null) {
-                            BluetoothDevice device = btAdapter.getRemoteDevice(address);
-
-                            //se realiza la conexion del Bluethoot crea y se conectandose a atraves de un socket
-                            try {
-                                btSocket = createBluetoothSocket(device);
-                            } catch (IOException e) {
-                                //showToast("La creacción del Socket fallo");
-                            }
-                            // Establish the Bluetooth socket connection.
-                            try {
-                                btSocket.connect();
-                            } catch (IOException e) {
-                                try {
-                                    btSocket.close();
-                                } catch (IOException e2) {
-                                    //insert code to deal with this
-                                }
-                            }
-                            // showToast("service conectado al arduino");
-                            Log.d("arduino", "service conectado al arduino");
-                        }
-
-                    } catch(InterruptedException e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-
-        }).start();*/
-
         return flags;
     }
 
@@ -124,7 +76,6 @@ public class ComunicacionService extends Service implements ServiceConnection {
     public void onDestroy()
     {
         Toast.makeText(this,"Servicio detenido",Toast.LENGTH_SHORT).show();
-        //reproductor.stop();
         try {
             btSocket.close();
         } catch (IOException e2) {
@@ -136,6 +87,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
         //hilo para la conexion existente
 
         new Thread(new Runnable() {
+
             public void run() {
 
                 while (true) {
@@ -148,7 +100,6 @@ public class ComunicacionService extends Service implements ServiceConnection {
                             try {
                                 btSocket = createBluetoothSocket(device);
                             } catch (IOException e) {
-                                //showToast("La creacción del Socket fallo");
                             }
                             // Establish the Bluetooth socket connection.
                             try {
@@ -160,95 +111,73 @@ public class ComunicacionService extends Service implements ServiceConnection {
                                     //insert code to deal with this
                                 }
                             }
-                           // showToast("service conectado al arduino");
                             Log.d("arduino", "service conectado al arduino");
                         }
 
                         } catch(InterruptedException e){
                             e.printStackTrace();
                         }
+                            InputStream tmpIn = null;
+                            OutputStream tmpOut = null;
+
+                        try
+                        {
+                            //Create I/O streams for connection
+                            tmpIn = btSocket.getInputStream();
+                            tmpOut = btSocket.getOutputStream();
+                        } catch (IOException e) { }
+
+                        mmInStream = tmpIn;
+                        mmOutStream = tmpOut;
                     }
             }
 
 
         }).start();
+
     }
-    //Handler que captura los brodacast que emite el SO al ocurrir los eventos del bluethoot
-   /* private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
 
-            //Atraves del Intent obtengo el evento de Bluethoot que informo el broadcast del SO
-            String action = intent.getAction();
+    public String read() {
+        byte[] msgBuffer = new byte[256];           //converts entered String into bytes
+        int bytes;
+        String readMessage = null;
+        try {
+            bytes = mmInStream.read(msgBuffer);
+            readMessage = new String(msgBuffer, 0, bytes);
+            msgBuffer = new byte[256];
 
-            //Si cambio de estado el Bluethoot(Activado/desactivado)
-            if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
-                //Obtengo el parametro, aplicando un Bundle, que me indica el estado del Bluethoot
-                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
+        } catch (IOException e) {   }
+        return readMessage;
+    }
 
-                //Si esta activado
-                if (state == BluetoothAdapter.STATE_ON) {
-                    showToast("Activar");
-                    Log.d("blut", "active blut");
+    //write method
+    public void write(String input) {
+        byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
+        try {
+            mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
+        } catch (IOException e) {  }
+    }
 
-                    showEnabled();
-                }
-            }
-            //Si se inicio la busqueda de dispositivos bluethoot
-            else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
-                //Creo la lista donde voy a mostrar los dispositivos encontrados
-                mDeviceList = new ArrayList<BluetoothDevice>();
-                Log.d("blut", "empiezo busqueda");
-                //muestro el cuadro de dialogo de busqueda
-                mProgressDlg.show();
-            }
-            //Si finalizo la busqueda de dispositivos bluethoot
-            else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                //se cierra el cuadro de dialogo de busqueda
-                mProgressDlg.dismiss();
 
-                //se inicia el activity DeviceListActivity pasandole como parametros, por intent,
-                //el listado de dispositivos encontrados
-                Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class);
 
-                newIntent.putParcelableArrayListExtra("device.list", mDeviceList);
-                Log.d("blut", "termine busqueda");
+    public IBinder onBind(Intent intent) {
+        return binder;
+    }
+    // Metodo que escucha el cambio de sensibilidad de los sensores
 
-                startActivity(newIntent);
-            }
-            //si se encontro un dispositivo bluethoot
-            else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                //Se lo agregan sus datos a una lista de dispositivos encontrados
-                BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                Log.d("blut", "encontré un dispositivo" + device.getName());
-                mDeviceList.add(device);
-                showToast("Dispositivo Encontrado:" + device.getName());
-            }
+
+    public class LocalBinder extends Binder {
+        public ComunicacionService getService() {
+            return ComunicacionService.this;
         }
-    };*/
+    }
 
 
-        public IBinder onBind(Intent intent) {
+    //Metodo que crea el socket bluethoot
+    private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
 
-            return binder;
-        }
-        // Metodo que escucha el cambio de sensibilidad de los sensores
-
-
-        public class LocalBinder extends Binder {
-            public ComunicacionService getService() {
-                return ComunicacionService.this;
-            }
-        }
-
-
-        //Metodo que crea el socket bluethoot
-        private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
-
-            return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
-        }
-
-
-
+        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+    }
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
@@ -260,7 +189,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
 
     }
     //metodo que llamaran los activities para enviar info
-    public BluetoothDevice getDevice(){
+    /*public BluetoothDevice getDevice(){
         return btAdapter.getRemoteDevice(address);
     }
 
@@ -275,7 +204,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
 }

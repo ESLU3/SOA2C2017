@@ -38,48 +38,26 @@ import java.util.UUID;
  **********************************************************************************************************/
 
 //******************************************** Hilo principal del Activity**************************************
-public class ConfigActivity extends Activity
-{
+public class ConfigActivity extends Activity {
 
     private EditText txtUmbralTemp;
     private EditText txtUmbralHum;
     private Switch switchFan;
     private Switch switchHeater;
 
-    private TextView txtComunicacionDevice;
+    private Button btnOriginal;
+    private Button btnObtener;
 
-    private static String tempArduino;
-    private static String humArduino;
-    private static String luzArduino;
     private static String heaterArduino;
-    private static String finArduino;
     private static String fanArduino;
 
     boolean mBounded;
     ComunicacionService mService;
 
-    Handler bluetoothIn;
-    final int handlerState = 0; //used to identify handler message
-
-    private BluetoothAdapter btAdapter = null;
-    private BluetoothSocket btSocket = null;
-    private StringBuilder recDataString = new StringBuilder();
-
-    //Variable para el hilo que manejará la comunicacion
-    private ConnectedThread mConnectedThread;
-
-    // SPP UUID service
-    private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
-    // variable donde se guardará la direccion MAC del HC06 del Arduino
-    private static String address = null;
-
-
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
 
@@ -87,65 +65,103 @@ public class ConfigActivity extends Activity
         bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 
         //Se definen los componentes del layout
-        txtUmbralTemp= (EditText) findViewById(R.id.txtUmbralTemp);
-        txtUmbralHum= (EditText) findViewById(R.id.txtUmbralHum);
-        txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
+        txtUmbralTemp = (EditText) findViewById(R.id.txtUmbralTemp);
+        txtUmbralHum = (EditText) findViewById(R.id.txtUmbralHum);
         switchHeater = (Switch) findViewById(R.id.switchHeater);
         switchFan = (Switch) findViewById(R.id.switchFan);
-
-        //obtengo el adaptador del bluethoot
-
-       // txtComunicacionDevice.setText(mService.getDevice().getName());
+        btnOriginal= (Button) findViewById(R.id.btnOriginal);
+        btnObtener= (Button) findViewById(R.id.btnObtener);
 
         txtUmbralHum.setOnClickListener(btnUmbralHum);
         txtUmbralTemp.setOnClickListener(btnUmbralTemp);
 
-        switchHeater.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    // If the switch button is on
-                    switchHeater.setBackgroundColor(Color.GREEN);
-                    if(mConnectedThread!=null){
-                        mConnectedThread.write("5");
-                        Log.d("arduino", "envie switch heater on");
-                    }
-                }
-                else {
-                    // If the switch button is off
-                    switchHeater.setBackgroundColor(Color.RED);
-                    if(mConnectedThread!=null){
-                        mConnectedThread.write("6");
-                        Log.d("arduino", "envie switch heater off");
-                    }
-                }
-            }
-        });
-        switchFan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    // If the switch button is on
-                    switchFan.setBackgroundColor(Color.GREEN);
-                    if(mConnectedThread!=null){
-                        mConnectedThread.write("7");
-                        Log.d("arduino", "envie switch fan on");
-                    }
-                }
-                else {
-                    // If the switch button is off
-                    switchFan.setBackgroundColor(Color.RED);
-                    if(mConnectedThread!=null){
-                        mConnectedThread.write("8");
-                        Log.d("arduino", "envie switch fan off");
-                    }
-                }
-            }
-        });
+        switchHeater.setOnCheckedChangeListener(switchHeaterListener);
 
+        switchFan.setOnCheckedChangeListener(switchFanListener);
 
+        btnOriginal.setOnClickListener(btnOriginalListener);
+
+        btnObtener.setOnClickListener(btnObtenerListener);
 
     }
+
+    private EditText.OnClickListener btnUmbralTemp = new EditText.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            if (mService != null) {
+                String valor = txtUmbralTemp.getText().toString();
+                mService.write("t" + valor);
+                Log.d("arduino", "envie umbral temp");
+            }
+        }
+    };
+
+    private EditText.OnClickListener btnUmbralHum = new EditText.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            if (mService != null) {
+                String valor = txtUmbralHum.getText().toString();
+                mService.write("h" + valor);
+                Log.d("arduino", "envie umbral hum");
+            }
+        }
+    };
+
+    private Button.OnClickListener btnOriginalListener = new EditText.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            if (mService != null) {
+                mService.write("o");
+                Log.d("arduino", "envie restaurar");
+                btnObtener.performClick();
+            }
+        }
+    };
+
+    private CompoundButton.OnCheckedChangeListener switchHeaterListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Log.d("arduino", "detecte cambio en switch heater");
+            if (isChecked) {
+                // If the switch button is on
+                switchHeater.setBackgroundColor(Color.GREEN);
+                if (mService != null) {
+                    mService.write("5");
+                    Log.d("arduino", "envie switch heater on");
+                }
+            } else {
+                // If the switch button is off
+                switchHeater.setBackgroundColor(Color.RED);
+                if (mService != null) {
+                    mService.write("6");
+                    Log.d("arduino", "envie switch heater off");
+                }
+            }
+        }
+    };
+
+    private CompoundButton.OnCheckedChangeListener switchFanListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Log.d("arduino", "detecte cambio en switch fan");
+            if (isChecked) {
+                // If the switch button is on
+                switchFan.setBackgroundColor(Color.GREEN);
+                if (mService != null) {
+                    mService.write("7");
+                    Log.d("arduino", "envie switch fan on");
+                }
+            } else {
+                // If the switch button is off
+                switchFan.setBackgroundColor(Color.RED);
+                if (mService != null) {
+                    mService.write("8");
+                    Log.d("arduino", "envie switch fan off");
+                }
+            }
+        }
+    };
+
     ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceDisconnected(ComponentName name) {
@@ -158,14 +174,18 @@ public class ConfigActivity extends Activity
         public void onServiceConnected(ComponentName name, IBinder service) {
             Toast.makeText(ConfigActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
             mBounded = true;
-            ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
+            ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder) service;
             mService = mLocalBinder.getService();
         }
     };
+
     protected void onStart() {
         super.onStart();
 
-    };
+    }
+
+
+
     @Override
     //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC05, creando un
     //socketBluethoot
@@ -178,32 +198,22 @@ public class ConfigActivity extends Activity
 
         super.onStop();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
+
     @Override
     //Cuando se ejecuta el evento onPause se cierra el socket Bluethoot, para no recibiendo datos
-    public void onPause()
-    {
+    public void onPause() {
         super.onPause();
-        try
-        {
-            //Don't leave Bluetooth sockets open when leaving activity
-            btSocket.close();
-        } catch (IOException e2) {
-            //insert code to deal with this
-        }
     }
+
     @Override
     protected void onRestart() {
 
         super.onRestart();
-    }
-    //Metodo que crea el socket bluethoot
-    private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
-
-        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
     }
 
 
@@ -211,120 +221,32 @@ public class ConfigActivity extends Activity
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    private EditText.OnClickListener btnUmbralTemp = new EditText.OnClickListener() {
+    private Button.OnClickListener btnObtenerListener = new View.OnClickListener() {
         @Override
         public void onClick(View b) {
-            if(mConnectedThread!=null){
-                String valor = txtUmbralTemp.getText().toString();
-                mConnectedThread.write("t" + valor);
-                Log.d("arduino", "envie umbral temp");
-            }
-        }
-    };
+            String datos;
 
-    private EditText.OnClickListener btnUmbralHum = new EditText.OnClickListener() {
-        @Override
-        public void onClick(View b) {
-            mConnectedThread = new ConfigActivity.ConnectedThread(mService.getBtSocket());
-            mConnectedThread.start();
-            if(mConnectedThread!=null){
-                String valor = txtUmbralHum.getText().toString();
-                mConnectedThread.write("h" + valor);
-                Log.d("arduino", "envie umbral hum");
-            }
-        }
-    };
-
-    private Button.OnClickListener btnOriginal = new EditText.OnClickListener() {
-        @Override
-        public void onClick(View b) {
-            mConnectedThread = new ConfigActivity.ConnectedThread(mService.getBtSocket());
-            mConnectedThread.start();
-            if(mConnectedThread!=null){
-                String valor = txtUmbralHum.getText().toString();
-                mConnectedThread.write("o");
-                Log.d("arduino", "envie umbral hum");
-            }
-        }
-    };
-
-
-    //******************************************** Hilo secundario del Activity**************************************
-
-    private class ConnectedThread extends Thread
-    {
-        private final InputStream mmInStream;
-        private final OutputStream mmOutStream;
-
-        //Constructor de la clase del hilo secundario
-        public ConnectedThread(BluetoothSocket socket)
-        {
-            InputStream tmpIn = null;
-            OutputStream tmpOut = null;
-
-            try
-            {
-                //Create I/O streams for connection
-                tmpIn = socket.getInputStream();
-                tmpOut = socket.getOutputStream();
-            } catch (IOException e) { }
-
-            mmInStream = tmpIn;
-            mmOutStream = tmpOut;
-        }
-
-        //metodo run del hilo, que va a entrar en una espera activa para recibir los msjs del HC06
-        public void run()
-        {
-            byte[] buffer = new byte[256];
-            int bytes;
-
-            //el hilo secundario se queda esperando mensajes del HC06
-            while (true)
-            {
-                /*try
-                {
-                    //se leen los datos del Bluethoot
-                   // bytes = mmInStream.read(buffer);
-                   // String readMessage = new String(buffer, 0, bytes);
-                    if(!readMessage.isEmpty()) {
-                        String[] datosArduino = readMessage.split("\\||"); //obtengo string enviado desde HC06 y hago split segun regex
-                        tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
-                        humArduino = datosArduino[1]; //obtengo humedad desde arduino
-                        luzArduino = datosArduino[2]; //obtengo luz desde arduino
-                        heaterArduino = datosArduino[3]; //obtengo estado calentador
-                        finArduino = datosArduino[4]; //obtengo estado calentador
-                        fanArduino = datosArduino[5]; //obtengo estado fan
-                        txtTempArduino.setText(tempArduino);
-                        txtHumArduino.setText(humArduino);
-                        txtLuzArduino.setText(luzArduino);
-                        txtFanArduino.setText(fanArduino);
-                        txtHeaterArduino.setText(heaterArduino);
-
+            datos = mService.read();
+            if (datos != null && datos.length() > 3) {
+                if (!datos.contains("fin")) { //si es fin del proceso
+                    String[] datosArduino = datos.split("\\|"); //obtengo string enviado desde HC06 y hago split segun regex
+                    heaterArduino = datosArduino[3]; //obtengo estado calentador
+                    fanArduino = datosArduino[5]; //obtengo estado fan
+                    if (heaterArduino.equals("ON")) {
+                        switchHeater.setChecked(true);
+                    } else {
+                        switchHeater.setChecked(false);
+                    }
+                    if (fanArduino.equals("ON")) {
+                        switchFan.setChecked(true);
+                    } else {
+                        switchFan.setChecked(false);
                     }
 
-                     //se muestran en el layout de la activity, utilizando el handler del hilo
-                    // principal antes mencionado
-                   // bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
-                } catch (IOException e) {
-                    break;
-                }*/
-            }
-        }
+                }
 
-
-        //write method
-        public void write(String input) {
-            byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
-            try {
-                mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
-            } catch (IOException e) {
-                //if you cannot write, close the application
-                showToast("La conexion fallo");
-                finish();
 
             }
         }
-    }
-
+    };
 }

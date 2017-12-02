@@ -10,7 +10,22 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/AppTheme"
-    tools:context="ar.com.secador_smart.DatosActivity">
+    tools:context="ar.com.secador_smart.DatosActivity"
+    tools:layout_editor_absoluteY="75dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <Button
+        android:id="@+id/btnObtener"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="18dp"
+        android:text="Cargar Datos"
+        app:layout_constraintRight_toLeftOf="@+id/btnOriginal"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView2"
@@ -20,28 +35,13 @@
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="108dp"
-        android:layout_height="25dp"
-        android:text="Conectado A:"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="42dp" />
-
-    <TextView
-        android:id="@+id/txtComunicacionDevice"
-        android:layout_width="1dp"
-        android:layout_height="32dp"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="64dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintRight_toRightOf="@+id/textView"
+        android:layout_marginBottom="62dp"
+        android:layout_marginRight="3dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -50,8 +50,16 @@
         android:fontFamily="serif"
         android:text="Temperatura (°C)"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="181dp" />
+        android:layout_marginStart="22dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="22dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -60,18 +68,31 @@
         android:fontFamily="serif"
         android:text="Humedad (%)"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="248dp" />
+        app:layout_constraintRight_toLeftOf="@+id/imageView5"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        android:layout_marginRight="12dp" />
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="122dp"
-        android:layout_height="35dp"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
         android:fontFamily="serif"
         android:text="Ventilador"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="433dp" />
+        android:layout_marginEnd="9dp"
+        app:layout_constraintRight_toLeftOf="@+id/imageView2"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/btnOriginal"
+        android:layout_marginTop="66dp"
+        android:layout_marginBottom="67dp"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        android:layout_marginRight="9dp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -80,84 +101,190 @@
         android:fontFamily="serif"
         android:text="Calefactor"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="387dp" />
+        android:layout_marginStart="20dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="132dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textView9"
+        android:layout_marginLeft="20dp" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/fan"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="443dp" />
+        app:layout_constraintRight_toLeftOf="@+id/switchHeater"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/btnOriginal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="6dp" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/fuego"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="375dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintRight_toRightOf="@+id/imageView2"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:src="@drawable/unnamed"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="246dp" />
+        app:layout_constraintRight_toLeftOf="@+id/switchHeater"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="57dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="75dp"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:src="@drawable/temp"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="182dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintRight_toRightOf="@+id/imageView3"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="147dp"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/txtUmbralTemp"
-        android:layout_width="112dp"
+        android:layout_width="100dp"
         android:layout_height="47dp"
+        android:layout_marginStart="3dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="235dp"
-        tools:layout_editor_absoluteY="182dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintRight_toRightOf="@+id/txtUmbralHum"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintLeft_toRightOf="@+id/imageView5"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp" />
 
     <EditText
         android:id="@+id/txtUmbralHum"
-        android:layout_width="112dp"
+        android:layout_width="100dp"
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="248dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="29dp"
+        app:layout_constraintLeft_toRightOf="@+id/imageView5"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="15dp" />
 
     <Switch
         android:id="@+id/switchHeater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="395dp" />
+        android:layout_width="63dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginRight="51dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/holo_red_dark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnOriginal"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/textView4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <Switch
         android:id="@+id/switchFan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="54dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="54dp"
+        android:background="@android:color/holo_red_dark"
         android:checked="false"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnOriginal"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="@+id/txtUmbralTemp"
+        app:layout_constraintRight_toRightOf="@+id/switchHeater"
+        app:layout_constraintTop_toTopOf="@+id/switchHeater"
+        app:layout_constraintVertical_bias="0.0"
         tools:checked="false"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="446dp" />
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="214dp"
+        android:layout_width="229dp"
         android:layout_height="35dp"
         android:text="Cambiar umbrales"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="130dp" />
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="68dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView9"
@@ -167,14 +294,37 @@
         android:textAlignment="textStart"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="320dp" />
+        android:layout_marginStart="48dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        android:layout_marginTop="65dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        android:layout_marginLeft="48dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
+        app:layout_constraintGuide_begin="16dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/btnOriginal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurar Valores"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView2"
+        android:layout_marginLeft="-181dp" />
 
 </android.support.constraint.ConstraintLayout>
