@@ -201,7 +201,10 @@ public class DatosActivity extends Activity
                     nManager.notify(12345, notificacionFin);
                     txtTiempoEstimado.setText("Secado finalizado!!");
                 }
-            }} catch (Exception e){ showToast("Error de conexión");}
+            }else{
+                    showToast("No se obtuvieron datos");
+                }
+            } catch (Exception e){ showToast("Error de conexión");}
 
 
 

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Dec 02 13:37:12 ART 2017
+#Sat Dec 02 14:31:57 ART 2017
 8.set=ANDROID_RESOURCE
 1.base=C\:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\resources-debug.ap_
 1.file=C\:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\fan.png

@@ -226,27 +226,32 @@ public class ConfigActivity extends Activity {
         public void onClick(View b) {
             String datos;
 
-            datos = mService.read();
-            if (datos != null && datos.length() > 3) {
-                if (!datos.contains("fin")) { //si es fin del proceso
-                    String[] datosArduino = datos.split("\\|"); //obtengo string enviado desde HC06 y hago split segun regex
-                    heaterArduino = datosArduino[3]; //obtengo estado calentador
-                    fanArduino = datosArduino[5]; //obtengo estado fan
-                    if (heaterArduino.equals("ON")) {
-                        switchHeater.setChecked(true);
-                    } else {
-                        switchHeater.setChecked(false);
-                    }
-                    if (fanArduino.equals("ON")) {
-                        switchFan.setChecked(true);
-                    } else {
-                        switchFan.setChecked(false);
+            try {
+                datos = mService.read();
+                if (datos != null && datos.length() > 3) {
+                    if (!datos.contains("fin")) { //si es fin del proceso
+                        String[] datosArduino = datos.split("\\|"); //obtengo string enviado desde HC06 y hago split segun regex
+                        heaterArduino = datosArduino[3]; //obtengo estado calentador
+                        fanArduino = datosArduino[5]; //obtengo estado fan
+                        if (heaterArduino.equals("ON")) {
+                            switchHeater.setChecked(true);
+                        } else {
+                            switchHeater.setChecked(false);
+                        }
+                        if (fanArduino.equals("ON")) {
+                            switchFan.setChecked(true);
+                        } else {
+                            switchFan.setChecked(false);
+                        }
+
                     }
 
+
+                } else {
+                    showToast("No se obtuvieron datos");
                 }
+            }catch(Exception e){ showToast("Error de conexión");}
 
-
-            }
         }
     };
 }
