@@ -29,6 +29,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -46,7 +47,8 @@ public class MainActivity extends Activity  {
     private TextView txtComunicacionDevice;
 
     boolean mBounded;
-    ComunicacionService mService;
+
+    private ComunicacionService mService;
 
     Handler bluetoothIn;
     final int handlerState = 0; //used to identify handler message
@@ -65,6 +67,7 @@ public class MainActivity extends Activity  {
             Toast.makeText(MainActivity.this, "Service is disconnected", Toast.LENGTH_LONG).show();
             mBounded = false;
             mService = null;
+
         }
 
         @Override
@@ -72,20 +75,30 @@ public class MainActivity extends Activity  {
             Toast.makeText(MainActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
             mBounded = true;
             ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
-            mService = mLocalBinder.getServerInstance();
+            mService = mLocalBinder.getService();
+            if(mService!=null){
+                Log.d("arduino","conectado al service");
+
+            }
         }
     };
     protected void onStart() {
         super.onStart();
+        Intent mIntent = new Intent(getApplicationContext(), ComunicacionService.class);
+        //startService(mIntent);
+        bindService(mIntent, mConnection, Context.BIND_AUTO_CREATE);
+        Log.d("arduino","pase por el on start");
 
-        Intent mIntent = new Intent(this, ComunicacionService.class);
-        bindService(mIntent, mService, BIND_AUTO_CREATE);
+
+
     };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // Defino los botones
         //txtEstado = (TextView) findViewById(R.id.txtEstado);
@@ -95,60 +108,24 @@ public class MainActivity extends Activity  {
         btnDatos = (Button) findViewById(R.id.btnDatos);
         btnConfig = (Button) findViewById(R.id.btnConfig);
 
-        // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
-        //
-        //
+
         txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
 
-        //Se crea un adaptador para podermanejar el bluethoot del celular
-        /*mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        //Se Crea la ventana de dialogo que indica que se esta buscando dispositivos bluethoot
-        mProgressDlg = new ProgressDialog(this);
-
-        mProgressDlg.setMessage("Buscando dispositivos...");
-        mProgressDlg.setCancelable(false);
-
-        //se asocia un listener al boton cancelar para la ventana de dialogo ue busca los dispositivos bluethoot
-        mProgressDlg.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancelar", btnCancelarDialogListener);
-
-        //se determina si existe bluethoot en el celular
-        if (mBluetoothAdapter == null) {
-            //si el celular no soporta bluethoot
-            showUnsupported();
-        } else {
-            //si el celular soporta bluethoot, se definen los listener para los botones de la activity
-            btnEmparejar.setOnClickListener(btnEmparejarListener);
-
-            btnBuscar.setOnClickListener(btnBuscarListener);*/
 
         btnDatos.setOnClickListener(btnDatosListener);
         btnConfig.setOnClickListener(btnConfigListener);
 
-            //se determina si esta activado el bluethoot
-           /* if (mBluetoothAdapter.isEnabled()) {
-                //se informa si esta habilitado
-                showEnabled();
-            } else {
-                //se informa si esta deshabilitado
-                showDisabled();
-            }
-        }*/
 
         //se definen un broadcastReceiver que captura el broadcast del SO cuando captura los siguientes eventos:
-       /* IntentFilter filter = new IntentFilter();
-
-        filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED); //Cambia el estado del Bluethoot (Acrtivado /Desactivado)
-        filter.addAction(BluetoothDevice.ACTION_FOUND); //Se encuentra un dispositivo bluethoot al realizar una busqueda
-        filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED); //Cuando se comienza una busqueda de bluethoot
-        filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED); //cuando la busqueda de bluethoot finaliza
-
-        //se define (registra) el handler que captura los broadcast anteriormente mencionados.
-        registerReceiver(mReceiver, filter);
-
-        //obtengo el adaptador del bluethoot
+        Log.d("arduino","pase por el on create");
+       /*
         btAdapter = BluetoothAdapter.getDefaultAdapter();*/
-        txtComunicacionDevice.setText(mService.getDevice().getName());
+        //Intent mIntent = new Intent(getApplicationContext(), ComunicacionService.class);
+        //bindService(mIntent, mConnection, Context.BIND_AUTO_CREATE);
+        Log.d("arduino", "service bindiead " + mBounded + " and " + mService);
+
+       // txtComunicacionDevice.setText(mService.getDevice().getName());
+
 
     }
 
@@ -184,6 +161,7 @@ public class MainActivity extends Activity  {
     @Override
     protected void onResume() {
         super.onResume();
+        //txtComunicacionDevice.setText(mService.getDevice().getName());
 
     }
 /*
@@ -255,8 +233,8 @@ public class MainActivity extends Activity  {
 
                 showDisabled();
             } else {*/
+            Log.d("arduino", "service bindiead" + mBounded + " and " + mService);
                 Intent intent = new Intent(MainActivity.this, DatosActivity.class);
-
                 startActivity(intent);
             //}
         }
@@ -274,4 +252,5 @@ public class MainActivity extends Activity  {
             startActivity(intent);
         }
     };
+
 }

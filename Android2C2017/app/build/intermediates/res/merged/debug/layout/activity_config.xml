@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_principal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/AppTheme"
+    tools:context="ar.com.secador_smart.DatosActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:text="Conectado A:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <TextView
+        android:id="@+id/txtComunicacionDevice"
+        android:layout_width="1dp"
+        android:layout_height="32dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="165dp"
+        android:layout_height="31dp"
+        android:fontFamily="serif"
+        android:text="Temperatura (°C)"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="181dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Humedad (%)"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="122dp"
+        android:layout_height="35dp"
+        android:fontFamily="serif"
+        android:text="Ventilador"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="433dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Calefactor"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="387dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/fan"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="443dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/fuego"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="375dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/unnamed"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/temp"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <EditText
+        android:id="@+id/txtUmbralTemp"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <EditText
+        android:id="@+id/txtUmbralHum"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <Switch
+        android:id="@+id/switchHeater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="395dp" />
+
+    <Switch
+        android:id="@+id/switchFan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        tools:checked="false"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="446dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="214dp"
+        android:layout_height="35dp"
+        android:text="Cambiar umbrales"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="320dp"
+        android:layout_height="44dp"
+        android:text="Activar/Desactivar Actuadores"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+</android.support.constraint.ConstraintLayout>

@@ -2,22 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Android\android-sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="d9947c13d563ba554fb099618111c2f81c43c636">
-        <dex dex="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5d011078e45e1334f65c3f547726dbf4856de4eb\classes.dex" />
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_6df549dec261401c9c5cc9c61f7dc87a938df543.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\esteban.luciano\.android\build-cache\f9e3925ffe16b7c108071b658ef6a9d06a3a6bbb\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="C:\Users\Esteban\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_7ec7fdcb794986d4769649964baa98aacc956429\classes.dex" />
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\esteban.luciano\Documents\GitHub\SOA2C2017\Android2C2017\app\build\intermediates\pre-dexed\debug\classes_843524404d03c8ee24a50a5404e0bd02227bcad3.jar" />
     </item>
 
 </items>

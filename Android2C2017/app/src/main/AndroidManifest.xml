@@ -40,6 +40,12 @@
         </activity>
         <!-- - Defino la activity que se comunica, transfierendo datos de los sensores, con Arduino -->
         <activity android:name=".DatosActivity"></activity>
+        <activity android:name=".ConfigActivity"></activity>
+        <service
+            android:name=".ComunicacionService"
+            android:label="ComunicacionService"
+            android:enabled="true">
+        </service>
 
     </application>
 

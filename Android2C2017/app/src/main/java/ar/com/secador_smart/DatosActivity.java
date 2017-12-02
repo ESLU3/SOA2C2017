@@ -28,6 +28,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.UUID;
 
 /*********************************************************************************************************
@@ -49,6 +50,8 @@ public class DatosActivity extends Activity implements SensorEventListener
     private TextView txtHeaterArduino;
     private TextView txtTiempoEstimado;
 
+    private Button btnObtener;
+
     private static String tempArduino;
     private static String humArduino;
     private static String luzArduino;
@@ -56,21 +59,14 @@ public class DatosActivity extends Activity implements SensorEventListener
     private static String finArduino;
     private static String fanArduino;
     //manager para mostrar notificaciones
-    NotificationManager nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+    Notification notificacionFin = null;
+
+    NotificationManager nManager = null;
     boolean mBounded;
-    ComunicacionService mService;
+    private ComunicacionService mService;
 
-    Intent intent = new Intent(this, DatosActivity.class);
-    // use System.currentTimeMillis() to have a unique ID for the pending intent
-    PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
 
-    Notification notificacionFin  = new Notification.Builder(this)
-            .setContentTitle("New mail from " + "test@gmail.com")
-            .setContentText("Subject")
-            .setSmallIcon(R.drawable.reloj)
-            .setContentIntent(pIntent)
-            .setAutoCancel(true).build();
 
     Handler bluetoothIn;
     final int handlerState = 0; //used to identify handler message
@@ -159,8 +155,22 @@ public class DatosActivity extends Activity implements SensorEventListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunicacion);
 
+
+
         // Accedemos al servicio de sensores
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent intent = new Intent(this, DatosActivity.class);
+        // use System.currentTimeMillis() to have a unique ID for the pending intent
+        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
+
+        notificacionFin  = new Notification.Builder(this)
+                .setContentTitle("Secado finalizado!!")
+                .setContentText("Secador SMART")
+                .setSmallIcon(R.drawable.reloj)
+                .setContentIntent(pIntent)
+                .setAutoCancel(true).build();
 
         //Se definen los componentes del layout
         txtTempArduino= (TextView) findViewById(R.id.txtTempArduino);
@@ -172,18 +182,11 @@ public class DatosActivity extends Activity implements SensorEventListener
        // txtComunicacionPaired= (TextView) findViewById(R.id.txtComunicacionPaired);
         txtComunicacionDevice= (TextView) findViewById(R.id.txtComunicacionDevice);
         //txtSensorDetected= (TextView) findViewById(R.id.txtSensorDetected);
-
+        btnObtener= (Button) findViewById(R.id.btnObtener);
+        btnObtener.setOnClickListener(btnObtenerListener);
         //obtengo el adaptador del bluethoot
-        /*btAdapter = BluetoothAdapter.getDefaultAdapter();
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        Intent intent=getIntent();
-        Bundle extras=intent.getExtras();
-
-        address= extras.getString("Dispositivo conectado");
-
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);*/
-
-        txtComunicacionDevice.setText(mService.getDevice().getName());
 
 
     }
@@ -200,14 +203,16 @@ public class DatosActivity extends Activity implements SensorEventListener
             Toast.makeText(DatosActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
             mBounded = true;
             ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
-            mService = mLocalBinder.getServerInstance();
+            mService = mLocalBinder.getService();
         }
     };
+
     protected void onStart() {
         super.onStart();
 
         Intent mIntent = new Intent(this, ComunicacionService.class);
-        bindService(mIntent, mService, BIND_AUTO_CREATE);
+        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+
     };
 
 
@@ -222,14 +227,7 @@ public class DatosActivity extends Activity implements SensorEventListener
 
         Ini_Sensores();
 
-        //Una establecida la conexion con el Hc05 se crea el hilo secundario, el cual va a recibir
-        // los datos de Arduino atraves del bluethoot
-        mConnectedThread = new ConnectedThread(mService.getBtSocket());
-        mConnectedThread.start();
 
-        //I send a character when resuming.beginning transmission to check device is connected
-        //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
     }
 
     @Override
@@ -249,13 +247,13 @@ public class DatosActivity extends Activity implements SensorEventListener
     {
         super.onPause();
         Parar_Sensores();
-        try
+        /*try
         {
             //Don't leave Bluetooth sockets open when leaving activity
             btSocket.close();
         } catch (IOException e2) {
             //insert code to deal with this
-        }
+        }*/
     }
     @Override
     protected void onRestart() {
@@ -311,54 +309,37 @@ public class DatosActivity extends Activity implements SensorEventListener
                 {
                     Thread.sleep(5000);
                     //se leen los datos del Bluethoot
-                    bytes = mmInStream.read(buffer);
-                    String readMessage = new String(buffer, 0, bytes);
-                    if(!readMessage.isEmpty()) {
-                        String[] datosArduino = readMessage.split("\\||"); //obtengo string enviado desde HC06 y hago split segun regex
-                        tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
-                        humArduino = datosArduino[1]; //obtengo humedad desde arduino
-                        luzArduino = datosArduino[2]; //obtengo luz desde arduino
-                        heaterArduino = datosArduino[3]; //obtengo estado calentador
-                        finArduino = datosArduino[4]; //obtengo estado calentador
-                        fanArduino = datosArduino[5]; //obtengo estado fan
-                        txtTempArduino.setText(tempArduino);
-                        txtHumArduino.setText(humArduino);
-                        txtLuzArduino.setText(luzArduino);
-                        txtFanArduino.setText(fanArduino);
-                        txtHeaterArduino.setText(heaterArduino);
 
-                        if (Float.parseFloat(humArduino) > 30) {
-                            if (Float.parseFloat(tempArduino) < 20) {
-                                txtTiempoEstimado.setText("2 horas");
-                            } else {
-                                txtTiempoEstimado.setText("1 hora");
-                            }
-                        } else if (Float.parseFloat(humArduino) > 20) {
-                            if (Float.parseFloat(tempArduino) < 20) {
-                                txtTiempoEstimado.setText("1 hora");
-                            } else {
-                                txtTiempoEstimado.setText("Media Hora");
-                            }
-                        } else {
-                            txtTiempoEstimado.setText("Secado terminado en breve");
-                        }
-                        if (finArduino.equals("1")) { //si es fin del proceso
-                            nManager.notify(12345, notificacionFin);
-                            txtTiempoEstimado.setText("Secado finalizado!!");
-                        }
-                    }
+
 
                      //se muestran en el layout de la activity, utilizando el handler del hilo
                     // principal antes mencionado
                    // bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
-                } catch (IOException e) {
-                    break;
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
 
+        //write method
+        public String read() {
+            byte[] msgBuffer = new byte[256];           //converts entered String into bytes
+            int bytes;
+            String readMessage = null;
+            try {
+                bytes = mmInStream.read(msgBuffer);
+                readMessage = new String(msgBuffer, 0, bytes);
+                msgBuffer[bytes] = '\0';
+
+            } catch (IOException e) {
+                //if you cannot write, close the application
+                showToast("La conexion fallo");
+                finish();
+
+            }
+            return readMessage;
+        }
 
         //write method
         public void write(String input) {
@@ -374,4 +355,63 @@ public class DatosActivity extends Activity implements SensorEventListener
         }
     }
 
+    private Button.OnClickListener btnObtenerListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            /*dialog.dismiss();
+
+            mBluetoothAdapter.cancelDiscovery();*/
+
+            //Una establecida la conexion con el Hc05 se crea el hilo secundario, el cual va a recibir
+            // los datos de Arduino atraves del bluethoot
+            String datos;
+            mConnectedThread = new ConnectedThread(mService.getBtSocket());
+            mConnectedThread.start();
+
+            //I send a character when resuming.beginning transmission to check device is connected
+            //If it is not an exception will be thrown in the write method and finish() will be called
+            mConnectedThread.write("x");
+            datos = mConnectedThread.read();
+            if(datos != null) {
+                if (!datos.contains("fin")) { //si es fin del proceso
+                    String[] datosArduino = datos.split("\\|"); //obtengo string enviado desde HC06 y hago split segun regex
+                    Log.d("arduino", "datos: " + datos);
+                    tempArduino = datosArduino[0]; //obtengo temperatura desde arduino
+                    humArduino = datosArduino[1]; //obtengo humedad desde arduino
+                    luzArduino = datosArduino[2]; //obtengo luz desde arduino
+                    heaterArduino = datosArduino[3]; //obtengo estado calentador
+                    finArduino = datosArduino[4]; //obtengo estado calentador
+                    fanArduino = datosArduino[5]; //obtengo estado fan
+                    txtTempArduino.setText(tempArduino);
+                    txtHumArduino.setText(humArduino);
+                    txtLuzArduino.setText(luzArduino);
+                    txtFanArduino.setText(fanArduino);
+                    txtHeaterArduino.setText(heaterArduino);
+
+                    if (Float.parseFloat(humArduino) > 30) {
+                        if (Float.parseFloat(tempArduino) < 20) {
+                            txtTiempoEstimado.setText("2 horas");
+                        } else {
+                            txtTiempoEstimado.setText("1 hora");
+                        }
+                    } else if (Float.parseFloat(humArduino) > 20) {
+                        if (Float.parseFloat(tempArduino) < 20) {
+                            txtTiempoEstimado.setText("1 hora");
+                        } else {
+                            txtTiempoEstimado.setText("Media Hora");
+                        }
+                    } else {
+                        txtTiempoEstimado.setText("Secado terminado en breve");
+                    }
+
+                }else {
+                    nManager.notify(12345, notificacionFin);
+                    txtTiempoEstimado.setText("Secado finalizado!!");
+                }
+            }
+
+
+
+        }
+    };
 }

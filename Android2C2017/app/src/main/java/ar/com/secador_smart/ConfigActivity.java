@@ -21,6 +21,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -82,6 +83,9 @@ public class ConfigActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
 
+        Intent mIntent = new Intent(this, ComunicacionService.class);
+        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+
         //Se definen los componentes del layout
         txtUmbralTemp= (EditText) findViewById(R.id.txtUmbralTemp);
         txtUmbralHum= (EditText) findViewById(R.id.txtUmbralHum);
@@ -91,7 +95,7 @@ public class ConfigActivity extends Activity
 
         //obtengo el adaptador del bluethoot
 
-        txtComunicacionDevice.setText(mService.getDevice().getName());
+       // txtComunicacionDevice.setText(mService.getDevice().getName());
 
         txtUmbralHum.setOnClickListener(btnUmbralHum);
         txtUmbralTemp.setOnClickListener(btnUmbralTemp);
@@ -103,7 +107,7 @@ public class ConfigActivity extends Activity
                     // If the switch button is on
                     switchHeater.setBackgroundColor(Color.GREEN);
                     if(mConnectedThread!=null){
-                        mConnectedThread.write("h1");
+                        mConnectedThread.write("5");
                         Log.d("arduino", "envie switch heater on");
                     }
                 }
@@ -111,7 +115,7 @@ public class ConfigActivity extends Activity
                     // If the switch button is off
                     switchHeater.setBackgroundColor(Color.RED);
                     if(mConnectedThread!=null){
-                        mConnectedThread.write("h0");
+                        mConnectedThread.write("6");
                         Log.d("arduino", "envie switch heater off");
                     }
                 }
@@ -124,7 +128,7 @@ public class ConfigActivity extends Activity
                     // If the switch button is on
                     switchFan.setBackgroundColor(Color.GREEN);
                     if(mConnectedThread!=null){
-                        mConnectedThread.write("f1");
+                        mConnectedThread.write("7");
                         Log.d("arduino", "envie switch fan on");
                     }
                 }
@@ -132,7 +136,7 @@ public class ConfigActivity extends Activity
                     // If the switch button is off
                     switchFan.setBackgroundColor(Color.RED);
                     if(mConnectedThread!=null){
-                        mConnectedThread.write("f0");
+                        mConnectedThread.write("8");
                         Log.d("arduino", "envie switch fan off");
                     }
                 }
@@ -155,22 +159,18 @@ public class ConfigActivity extends Activity
             Toast.makeText(ConfigActivity.this, "Service is connected", Toast.LENGTH_LONG).show();
             mBounded = true;
             ComunicacionService.LocalBinder mLocalBinder = (ComunicacionService.LocalBinder)service;
-            mService = mLocalBinder.getServerInstance();
+            mService = mLocalBinder.getService();
         }
     };
     protected void onStart() {
         super.onStart();
 
-        Intent mIntent = new Intent(this, ComunicacionService.class);
-        bindService(mIntent, mService, BIND_AUTO_CREATE);
     };
     @Override
     //Cada vez que se detecta el evento OnResume se establece la comunicacion con el HC05, creando un
     //socketBluethoot
     public void onResume() {
         super.onResume();
-        mConnectedThread = new ConfigActivity.ConnectedThread(mService.getBtSocket());
-        mConnectedThread.start();
     }
 
     @Override
@@ -225,9 +225,24 @@ public class ConfigActivity extends Activity
     private EditText.OnClickListener btnUmbralHum = new EditText.OnClickListener() {
         @Override
         public void onClick(View b) {
+            mConnectedThread = new ConfigActivity.ConnectedThread(mService.getBtSocket());
+            mConnectedThread.start();
             if(mConnectedThread!=null){
                 String valor = txtUmbralHum.getText().toString();
                 mConnectedThread.write("h" + valor);
+                Log.d("arduino", "envie umbral hum");
+            }
+        }
+    };
+
+    private Button.OnClickListener btnOriginal = new EditText.OnClickListener() {
+        @Override
+        public void onClick(View b) {
+            mConnectedThread = new ConfigActivity.ConnectedThread(mService.getBtSocket());
+            mConnectedThread.start();
+            if(mConnectedThread!=null){
+                String valor = txtUmbralHum.getText().toString();
+                mConnectedThread.write("o");
                 Log.d("arduino", "envie umbral hum");
             }
         }

@@ -40,6 +40,13 @@
         </activity>
         <!-- - Defino la activity que se comunica, transfierendo datos de los sensores, con Arduino -->
         <activity android:name="ar.com.secador_smart.DatosActivity" />
+        <activity android:name="ar.com.secador_smart.ConfigActivity" />
+
+        <service
+            android:name="ar.com.secador_smart.ComunicacionService"
+            android:enabled="true"
+            android:label="ComunicacionService" >
+        </service>
     </application>
 
 </manifest>

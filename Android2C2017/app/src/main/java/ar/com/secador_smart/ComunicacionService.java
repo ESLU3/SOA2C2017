@@ -13,6 +13,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,11 +58,83 @@ public class ComunicacionService extends Service implements ServiceConnection {
     private final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     // variable donde se guardará la direccion MAC del HC06 del Arduino
-    private String address = null;
+    private String address = "00:12:08:09:28:06";
+
+    private final IBinder binder=new LocalBinder();
+
+    public void onCreate()
+    {
+        Toast.makeText(this,"Servicio creado", Toast.LENGTH_SHORT).show();
+        //reproductor.setLooping(true);
+        Log.d("arduino", "servicio iniciado");
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+    }
+
+    @Override
+    //Despues de onCreate automaticamente se ejecuta a OnstartCommand,
+    //idArranque: Es el id del servicio a ejecutar
+    public int onStartCommand(Intent intenc, int flags, int idArranque)
+    {
+        Toast.makeText(this,"Servicio arrancado "+ idArranque,Toast.LENGTH_SHORT).show();
+
+       /* new Thread(new Runnable() {
+            public void run() {
+
+                while (true) {
+                    try {
+                        Thread.sleep(500);
+                        if (btSocket == null) {
+                            BluetoothDevice device = btAdapter.getRemoteDevice(address);
+
+                            //se realiza la conexion del Bluethoot crea y se conectandose a atraves de un socket
+                            try {
+                                btSocket = createBluetoothSocket(device);
+                            } catch (IOException e) {
+                                //showToast("La creacción del Socket fallo");
+                            }
+                            // Establish the Bluetooth socket connection.
+                            try {
+                                btSocket.connect();
+                            } catch (IOException e) {
+                                try {
+                                    btSocket.close();
+                                } catch (IOException e2) {
+                                    //insert code to deal with this
+                                }
+                            }
+                            // showToast("service conectado al arduino");
+                            Log.d("arduino", "service conectado al arduino");
+                        }
+
+                    } catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+        }).start();*/
+
+        return flags;
+    }
+
+    @Override
+    //On destroy se invoca cuando se ejcuta stopService
+    public void onDestroy()
+    {
+        Toast.makeText(this,"Servicio detenido",Toast.LENGTH_SHORT).show();
+        //reproductor.stop();
+        try {
+            btSocket.close();
+        } catch (IOException e2) {
+            //insert code to deal with this
+        }
+    }
 
     public ComunicacionService() {
         //hilo para la conexion existente
-        Log.d("arduino", "servicio iniciado");
+
         new Thread(new Runnable() {
             public void run() {
 
@@ -75,7 +148,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
                             try {
                                 btSocket = createBluetoothSocket(device);
                             } catch (IOException e) {
-                                showToast("La creacción del Socket fallo");
+                                //showToast("La creacción del Socket fallo");
                             }
                             // Establish the Bluetooth socket connection.
                             try {
@@ -87,7 +160,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
                                     //insert code to deal with this
                                 }
                             }
-                            showToast("service conectado al arduino");
+                           // showToast("service conectado al arduino");
                             Log.d("arduino", "service conectado al arduino");
                         }
 
@@ -155,16 +228,14 @@ public class ComunicacionService extends Service implements ServiceConnection {
 
 
         public IBinder onBind(Intent intent) {
-            return null;
+
+            return binder;
         }
         // Metodo que escucha el cambio de sensibilidad de los sensores
 
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-        }
 
         public class LocalBinder extends Binder {
-            public ComunicacionService getServerInstance() {
+            public ComunicacionService getService() {
                 return ComunicacionService.this;
             }
         }
@@ -177,9 +248,7 @@ public class ComunicacionService extends Service implements ServiceConnection {
         }
 
 
-        private void showToast(String message) {
-            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-        }
+
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {

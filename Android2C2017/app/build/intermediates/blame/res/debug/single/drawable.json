@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\temp.png"
     },
     {
+        "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\luz.png",
+        "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\luz.png"
+    },
+    {
         "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fan.png",
         "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\fan.png"
     },
@@ -12,12 +16,28 @@
         "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\luz.png"
     },
     {
+        "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fuego.png",
+        "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\fuego.png"
+    },
+    {
         "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\reloj.png",
         "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\reloj.png"
     },
     {
+        "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\reloj.png",
+        "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\reloj.png"
+    },
+    {
         "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_sensor.png",
         "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\icon_sensor.png"
+    },
+    {
+        "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\unnamed.png",
+        "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\unnamed.png"
+    },
+    {
+        "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\temp.png",
+        "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\temp.png"
     },
     {
         "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_sensor.png",
@@ -26,6 +46,10 @@
     {
         "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fuego.png",
         "source": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\fuego.png"
+    },
+    {
+        "merged": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fan.png",
+        "source": "C:\\Users\\esteban.luciano\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\src\\main\\res\\drawable\\fan.png"
     },
     {
         "merged": "C:\\Users\\Esteban\\Documents\\GitHub\\SOA2C2017\\Android2C2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\unnamed.png",
